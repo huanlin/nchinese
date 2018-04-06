@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8CDF9743-E28C-4B27-8B28-A3D1BA55668D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NChinese", "NChinese\NChinese.csproj", "{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NChinese", "NChinese\NChinese.csproj", "{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NChinese.Phonetic", "NChinese.Phonetic\NChinese.Phonetic.csproj", "{81CC8399-6B72-4CCC-92E7-895F976AFD87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NChinese.Phonetic", "NChinese.Phonetic\NChinese.Phonetic.csproj", "{81CC8399-6B72-4CCC-92E7-895F976AFD87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NChinese.Test", "..\test\NChinese.Test\NChinese.Test.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NChineseTest", "..\test\NChineseTest\NChineseTest.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

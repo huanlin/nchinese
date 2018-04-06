@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
+using NChinese;
 using NUnit.Framework;
-using SharpChinese;
 
-namespace ChineseTest
+namespace NChineseTest
 {
     /// <summary>
     /// 注意：此檔案包含 UTF-16 編碼的中文字，故存檔時必須採用 Unitcode 編碼格式（即 UTF-16 Little Endian）。
@@ -20,6 +20,8 @@ namespace ChineseTest
 
         [TestCase("王𤭢𪚥誤吳吴")]
         [TestCase("𠑗㒨𨉼")] // CJK 擴展 B 區
+        [TestCase("𪜎𪡀𪞫")] // CJK 擴展 C 區
+        [TestCase("𫞦𫟁𫠇")] // CJK 擴展 D 區
         public void Should_IsUnihan_Return_True_For_CJK_Ideographs(string s)
         {
             var charEnum = StringInfo.GetTextElementEnumerator(s);

@@ -7,10 +7,11 @@
     <ProjectGuid>{8EDF4429-251A-416D-BB68-93F227191BCF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NChinese.Test</RootNamespace>
-    <AssemblyName>NChinese.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>NChineseTest</RootNamespace>
+    <AssemblyName>NChineseTest</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,16 @@
     <PackageReference Include="NUnit">
       <Version>3.10.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NChinese.Phonetic\NChinese.Phonetic.csproj">
+      <Project>{81cc8399-6b72-4ccc-92e7-895f976afd87}</Project>
+      <Name>NChinese.Phonetic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NChinese\NChinese.csproj">
+      <Project>{2c621cc8-d016-41d5-9ff2-5b49dc9560f0}</Project>
+      <Name>NChinese</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
