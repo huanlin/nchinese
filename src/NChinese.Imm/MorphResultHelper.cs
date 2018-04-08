@@ -9,7 +9,7 @@ namespace NChinese.Imm
 	{
 		public static string GetOutputString(MsIme.MorphResult mr)
 		{
-			return Marshal.PtrToStringUni(mr.PtrToOutputString, mr.OutputLength);
+            return Marshal.PtrToStringUni(mr.PtrToOutputString, mr.OutputLength);
 		}
 
 		public static string[] GetMonoRubyArray(MsIme.MorphResult mr)

@@ -2,7 +2,7 @@
 using NChinese;
 using NUnit.Framework;
 
-namespace NChineseTest
+namespace Test.NChinese
 {
     /// <summary>
     /// 注意：此檔案包含 UTF-16 編碼的中文字，故存檔時必須採用 Unitcode 編碼格式（即 UTF-16 Little Endian）。
