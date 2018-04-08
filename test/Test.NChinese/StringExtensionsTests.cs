@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 using NChinese;
 using NUnit.Framework;
 
@@ -53,7 +52,6 @@ namespace Test.NChinese
             var result = input.FindConsecutiveUnihan();
             Assert.AreEqual(result.StartIndex, expectedStartIndex);
             Assert.AreEqual(result.StopIndex, expectedStopIndex);
-            Debug.WriteLine(input.Substring(0, 4));
         }
 
     }
