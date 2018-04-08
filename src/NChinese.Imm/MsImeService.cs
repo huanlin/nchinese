@@ -240,24 +240,39 @@ namespace NChinese.Imm
         }
 
         /// <summary>
-        /// Note: This method has not tested yet!
+        /// 取得一串中文字的拼音。
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="input">輸入字串。注意：輸入字串必須全部都是中文字。如果包含非中文字的字元，會因為轉換失敗而返回空陣列。</param>
         /// <returns></returns>
-        public string[] GetPinyin(string text)
+        public string[] GetPinyin(string input)
         {
             if (_imeClass == ImeClass.Taiwan ||
                 _imeClass == ImeClass.TaiwanBbo ||
                 _imeClass == ImeClass.China)
             {
                 string[] result = GetJMorphResult(
-                    text,
+                    input,
                     MsIme.ConversionRequest.ReverseConversion,
                     MsIme.ConversionMode.Pinyin,
                     (mr) => MorphResultHelper.GetMonoRubyArray(mr));
                 return result;
             }
             throw new Exception("GetPinYin can be used only when ImeClassName is Taiwan or China!");
+        }
+
+        /// <summary>
+        /// 取得日文平假名。NOT TESTED YET!!
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public string[] GetHiragana(string input)
+        {
+            string[] result = GetJMorphResult(
+                input,
+                MsIme.ConversionRequest.ReverseConversion,
+                MsIme.ConversionMode.HiraganaOut,
+                (mr) => MorphResultHelper.GetMonoRubyArray(mr));
+            return result;
         }
 
         public static string[] ImeClassNames

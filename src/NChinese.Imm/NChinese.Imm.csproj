@@ -17,4 +17,8 @@
     <DefineConstants>TRACE;DEBUG;X86;NET452</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NChinese\NChinese.csproj" />
+  </ItemGroup>
+
 </Project>

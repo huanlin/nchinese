@@ -13,14 +13,15 @@ namespace ReverseConversionDemo
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            using (MsImeService ime = new MsImeService(ImeClass.China))
+            OutputTextBox.Clear();
+            using (var pinyinProvider = new ImmPinyinConversionProvider())
             {
-                // Show conversion mode capabilities.
-                OutputTextBox.Text = $"ConversionModeCaps: {ime.ConversionModeCaps}";
+                string[] result = pinyinProvider.Convert(InputTextBox.Text);
 
-                string[] result = ime.GetPinyin(InputTextBox.Text);
-
-                OutputTextBox.Text += Environment.NewLine + result;
+                foreach (var s in result)
+                {
+                    OutputTextBox.Text += Environment.NewLine + s;
+                }                
             }
         }
     }

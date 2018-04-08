@@ -83,6 +83,10 @@
       <Project>{27b11bee-f94f-4370-bdcd-fc280bbff278}</Project>
       <Name>NChinese.Imm</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\NChinese\NChinese.csproj">
+      <Project>{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}</Project>
+      <Name>NChinese</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

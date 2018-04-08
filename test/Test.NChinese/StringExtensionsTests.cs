@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using NChinese;
 using NUnit.Framework;
 
@@ -42,6 +43,17 @@ namespace Test.NChinese
             {
                 Assert.IsFalse(charEnum.GetTextElement().IsUnihan());
             }
+        }
+
+        [TestCase("哈囉！你好。", 0, 1)]
+        [TestCase(" 哈囉 你好。", 1, 2)]
+        [TestCase("𠑗㒨𨉼", 0, 3)] // CJK 擴展 B 區
+        public void Should_FindConsecutiveUnihan_FindChinese(string input, int expectedStartIndex, int expectedStopIndex)
+        {
+            var result = input.FindConsecutiveUnihan();
+            Assert.AreEqual(result.StartIndex, expectedStartIndex);
+            Assert.AreEqual(result.StopIndex, expectedStopIndex);
+            Debug.WriteLine(input.Substring(0, 4));
         }
 
     }

@@ -20,11 +20,17 @@ namespace NChinese.Imm
 				throw new Exception("Monoruby position array is NULL!");
 			}
 
-			List<string> results = new List<string>();
-
 			string output = Marshal.PtrToStringUni(mr.PtrToOutputString, mr.OutputLength);
 
-			int offset = 0;
+            // 當輸入字串包含非中文字的字元時，OutputLength 可能大於 0，但輸出字串的第一個字元卻是 '\0'
+            if (String.IsNullOrEmpty(output) || output[0] == '\0')
+            {                
+                return new string[] { }; 
+            }
+
+            List<string> results = new List<string>();
+
+            int offset = 0;
 			int lastIndex = -1;
 			int currIndex;
 			int totalCount = 0;

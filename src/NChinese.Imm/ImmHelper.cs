@@ -12,7 +12,6 @@ namespace NChinese.Imm
 	{
 		private static List<KeyboardLayoutInfo> _keyboardLayoutList;
 
-		// Class constructor
 		static ImmHelper()
 		{
 			_keyboardLayoutList = new List<KeyboardLayoutInfo>();

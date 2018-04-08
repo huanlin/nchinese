@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace NChinese
 {
@@ -9,7 +10,7 @@ namespace NChinese
         /// </summary>
         /// <param name="aChar">類行為 String 的中文字元（unicode 字元不能以 char）</param>
         /// <returns></returns>
-        public static bool IsBopomofo(this string aChar)
+        public static bool IsZhuyin(this string aChar)
         {
             if (String.IsNullOrEmpty(aChar))
                 return false;
@@ -48,5 +49,37 @@ namespace NChinese
             return false;
         }
 
+        /// <summary>
+        /// 從輸入字串中尋找第一組連續的中日韓表意文字，並傳回那組文字的起始和結束索引。
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>若有找到連續的 CJK 字元，傳回那組文字的起始和結束索引。若沒找到，則傳回的起始索引和結束索引都是 -1。</returns>
+        public static (int StartIndex, int StopIndex) FindConsecutiveUnihan(this string input)
+        {
+            int start = -1;
+            int stop = -1;
+
+            var charEnum = StringInfo.GetTextElementEnumerator(input);
+            while (charEnum.MoveNext())
+            {
+                string text = charEnum.GetTextElement();
+                if (text.IsUnihan())
+                {
+                    if (start < 0)
+                    {
+                        start = charEnum.ElementIndex;
+                    }
+                    stop = charEnum.ElementIndex;
+                }
+                else
+                {
+                    if (start >= 0)
+                    {
+                        break;
+                    }
+                }
+            }
+            return (start, stop);
+        }
     }
 }
