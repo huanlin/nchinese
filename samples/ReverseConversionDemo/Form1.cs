@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using NChinese;
 using NChinese.Imm;
 
 namespace ReverseConversionDemo
@@ -18,9 +19,10 @@ namespace ReverseConversionDemo
             {
                 string[] result = pinyinProvider.Convert(InputTextBox.Text);
 
-                foreach (var s in result)
+                foreach (var pinyin in result)
                 {
-                    OutputTextBox.Text += Environment.NewLine + s;
+                    string zhuyin = PinyinToZhuyin.Convert(pinyin);
+                    OutputTextBox.Text += Environment.NewLine + $"拼音：{pinyin}  注音：{zhuyin}";
                 }                
             }
         }

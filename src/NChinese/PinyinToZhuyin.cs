@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace NChinese
 {
-    public static class PhoneticConverter
+    public static class PinyinToZhuyin
     {
 
         private static Dictionary<string, string> _pinyinToZhuyinTable;
-        private static Dictionary<string, string> _pinyinToneTable;
+        private static Dictionary<char, string> _pinyinToneTable;
 
-        static PhoneticConverter()
+        static PinyinToZhuyin()
         {
             _pinyinToZhuyinTable = new Dictionary<string, string>
             {
@@ -240,9 +242,9 @@ namespace NChinese
                 { "nong",   "ㄋㄨㄥ" },
                 { "nou",    "ㄋㄡ" },
                 { "nu",     "ㄋㄨ" },
-                { "nü",     "ㄋㄩ" },
+                { "nv",     "ㄋㄩ" },
                 { "nuan",   "ㄋㄨㄢ" },
-                { "nüe",    "ㄋㄩㄝ" },
+                { "nve",    "ㄋㄩㄝ" },
                 { "nun",    "ㄋㄨㄣ" },
                 { "nuo",    "ㄋㄨㄛ" },
                 { "o",      "ㄛ" },
@@ -424,42 +426,67 @@ namespace NChinese
                 { "zuo",    "ㄗㄨㄛ" }
             };
 
-            _pinyinToneTable = new Dictionary<string, string>
+            _pinyinToneTable = new Dictionary<char, string>
             {
-                { "ā", "a1" },
-                { "á", "a2" },
-                { "ǎ", "a3" },
-                { "à", "a4" },
-                { "ē", "e1" },
-                { "é", "e2" },
-                { "ě", "e3" },
-                { "è", "e4" },
-                { "ō", "o1" },
-                { "ó", "o2" },
-                { "ǒ", "o3" },
-                { "ò", "o4" },
-                { "ī", "i1" },
-                { "í", "i2" },
-                { "ǐ", "i3" },
-                { "ì", "i4" },
-                { "ū", "u1" },
-                { "ú", "u2" },
-                { "ǔ", "u3" },
-                { "ù", "u4" },
-                { "ü", "v1" },
-                { "ǘ", "v2" },
-                { "ǚ", "v3" },
-                { "ǜ", "v4" },
-                { "ń", "n2" },
-                { "ň", "n3" },
-                { "", "m2" }
+                { 'ā', "a1" },
+                { 'á', "a2" },
+                { 'ǎ', "a3" },
+                { 'à', "a4" },
+                { 'ē', "e1" },
+                { 'é', "e2" },
+                { 'ě', "e3" },
+                { 'è', "e4" },
+                { 'ō', "o1" },
+                { 'ó', "o2" },
+                { 'ǒ', "o3" },
+                { 'ò', "o4" },
+                { 'ī', "i1" },
+                { 'í', "i2" },
+                { 'ǐ', "i3" },
+                { 'ì', "i4" },
+                { 'ū', "u1" },
+                { 'ú', "u2" },
+                { 'ǔ', "u3" },
+                { 'ù', "u4" },
+                { 'ü', "v1" },
+                { 'ǘ', "v2" },
+                { 'ǚ', "v3" },
+                { 'ǜ', "v4" },
+                { 'ń', "n2" },
+                { 'ň', "n3" },
+                { '', "m2" }
             };
         }
 
 
-        public static string PinyinToZhuyin(string pinyinStr)
+        public static string Convert(string pinyinStr)
         {
-            return "";
+            var input = new StringBuilder(pinyinStr);
+
+            // 找聲調符號
+            int toneIndex = 0; // 預設為輕聲。若音調查閱表裡沒找到，則表示為輕聲。
+            for (int i = 0; i < input.Length; i++)
+            {
+                // 找聲調
+                char current = input[i];
+                if (_pinyinToneTable.ContainsKey(current))
+                {
+                    string tone = _pinyinToneTable[current];
+                    input[i] = tone[0]; // 找到聲調符號以後，把輸入字串中的拼音符號改成沒有音調註記的字元。
+                    toneIndex = System.Convert.ToInt32(tone[1].ToString());
+                    break;
+                }
+            }
+
+            string pinyin = input.ToString();
+            if (_pinyinToZhuyinTable.ContainsKey(pinyin) == false)
+            {
+                throw new Exception($"轉換失敗! 無此拼音組合：{pinyin}");
+            }
+
+            string zhuyinTones = "˙\x02c9ˊˇˋ";
+            string zhuyin = _pinyinToZhuyinTable[pinyin];
+            return zhuyin + zhuyinTones[toneIndex];
         }
     }
 }

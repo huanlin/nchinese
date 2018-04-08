@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace NChinese.Imm
 {
@@ -10,6 +11,8 @@ namespace NChinese.Imm
         {
             _imeService = new MsImeService(ImeClass.China);
         }
+
+        public bool FixForTraditionalChinese { get; set; } = true;
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
@@ -46,6 +49,14 @@ namespace NChinese.Imm
 
         public string[] Convert(string input)
         {
+            if (FixForTraditionalChinese)
+            {
+                var sb = new StringBuilder(input);
+                sb.Replace("內", "内"); // 注意兩個字元不一樣! 前者的拼音會讀作「納」。
+                sb.Replace("過", "过"); // 若不作此調整，「過」拼音會讀作一聲的「郭」。
+                input = sb.ToString();
+            }
+
             string[] result = _imeService.GetPinyin(input);
             return result;
         }
