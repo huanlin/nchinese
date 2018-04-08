@@ -19,11 +19,11 @@ namespace NChinese.Imm
     /// This class is a wrapper for IFELanguage.
     /// <para>Ref: http://www.mihai-nita.net/article.php?artID=20051215a</para>
     /// </summary>
-    public sealed class MsImeFacade : IDisposable
+    public sealed class MsImeService : IDisposable
     {
         #region Dispose pattern
 
-        private bool m_Disposed;
+        private bool _disposed;
 
         public bool Disposed
         {
@@ -31,7 +31,7 @@ namespace NChinese.Imm
             {
                 lock (this)
                 {
-                    return m_Disposed;
+                    return _disposed;
                 }
             }
         }
@@ -40,10 +40,10 @@ namespace NChinese.Imm
         {
             lock (this)
             {
-                if (m_Disposed == false)
+                if (_disposed == false)
                 {
                     Cleanup();
-                    m_Disposed = true;
+                    _disposed = true;
                     GC.SuppressFinalize(this);
                 }
             }
@@ -59,7 +59,7 @@ namespace NChinese.Imm
             }
         }
 
-        ~MsImeFacade()
+        ~MsImeService()
         {
             Cleanup();
         }
@@ -80,7 +80,7 @@ namespace NChinese.Imm
             "MSIME.Taiwan.ImeBbo"
         };
 
-        public MsImeFacade(ImeClass imeClass)
+        public MsImeService(ImeClass imeClass)
         {
             if (!_coInitialized)
             {

@@ -10,12 +10,12 @@ namespace NChinese.Imm
     /// </summary>
     public static class ImmHelper
 	{
-		private static List<KeyboardLayoutInfo> s_KeyboardLayoutList;
+		private static List<KeyboardLayoutInfo> _keyboardLayoutList;
 
 		// Class constructor
 		static ImmHelper()
 		{
-			s_KeyboardLayoutList = new List<KeyboardLayoutInfo>();
+			_keyboardLayoutList = new List<KeyboardLayoutInfo>();
 			InitializeKeyboardLayoutList();
 		}
 
@@ -53,7 +53,7 @@ namespace NChinese.Imm
 					imeName = Marshal.PtrToStringUni(imeNamePtr);
 
 					KeyboardLayoutInfo kli = new KeyboardLayoutInfo(imeName, hklList[i]);
-					s_KeyboardLayoutList.Add(kli);
+					_keyboardLayoutList.Add(kli);
 				}
 			}
 			finally
@@ -69,7 +69,7 @@ namespace NChinese.Imm
 		/// <returns></returns>
 		public static bool IsImeInstalled(string imeNameToCheck)
 		{
-			foreach (KeyboardLayoutInfo kli in s_KeyboardLayoutList)
+			foreach (KeyboardLayoutInfo kli in _keyboardLayoutList)
 			{
 				if (kli.ImeName.Equals(imeNameToCheck))
 				{

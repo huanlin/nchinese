@@ -13,7 +13,7 @@ namespace ReverseConversionDemo
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            using (MsImeFacade ime = new MsImeFacade(ImeClass.China))
+            using (MsImeService ime = new MsImeService(ImeClass.China))
             {
                 // Show conversion mode capabilities.
                 OutputTextBox.Text = $"ConversionModeCaps: {ime.ConversionModeCaps}";
