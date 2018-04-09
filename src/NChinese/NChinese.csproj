@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
+    <Version>0.1.0-beta</Version>
+    <Authors>Michael Tsai</Authors>
+    <Company></Company>
+    <Description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</Description>
+    <Copyright></Copyright>
+    <PackageLicenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/huanlin/nchinese</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/huanlin/nchinese</RepositoryUrl>
+    <PackageTags>chinese;pinyin;zhuyin;bopomofo;CJK;中文;漢字;注音;拼音</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Initial release as Nuget package.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

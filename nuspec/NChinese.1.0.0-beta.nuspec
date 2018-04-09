@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NChinese</id>
+    <version>1.0.0-beta</version>
+    <authors>Michael Tsai</authors>
+    <owners>Michael Tsai</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/huanlin/nchinese</projectUrl>
+    <description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</description>
+    <releaseNotes>Initial release as Nuget package.</releaseNotes>
+    <tags>chinese pinyin zhuyin bopomofo CJK 中文 漢字 注音 拼音</tags>
+    <copyright>Copyright (c) 2018 Michael Tsai (蔡煥麟)</copyright>
+    <repository url="https://github.com/huanlin/nchinese" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="NUnit" version="3.10.1" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.5.0-preview1-26216-02" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <developmentDependency>False</<developmentDependency>
+  </metadata>
+  <files>
+    <file src="D:\Work\GitHub\huanlin\nchinese\src\NChinese\bin\Debug\net452\NChinese.dll" target="lib\net452\NChinese.dll" />
+  </files>
+</package>

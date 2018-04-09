@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
     <Platforms>AnyCPU;x86;x64</Platforms>
+    <Authors>Michael Tsai</Authors>
+    <Description>NChinese.Imm provides helper classes for doing reverse conversion via IFELanguage COM objects. That is, you can use this library to get Zhuyin (aka BoPoMoFo) or Pinyin symbols for a Chinese string.</Description>
+    <PackageLicenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/huanlin/nchinese</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/huanlin/nchinese</RepositoryUrl>
+    <PackageTags>chinese;pinyin;zhuyin;bopomofo;CJK;中文;漢字;注音;拼音</PackageTags>
+    <Version>1.0.0-beta</Version>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
