@@ -1,4 +1,5 @@
 ﻿using Nuke.Common.Tools.GitVersion;
+using Nuke.Common.Tools.NuGet;
 using Nuke.Core;
 using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
 using static Nuke.Common.Tools.NuGet.NuGetTasks;
@@ -46,9 +47,9 @@ class Build : NukeBuild
     Target Pack => _ => _
             .DependsOn(Compile)
             .Executes(() =>
-            {                
+            {
                 string nuspecFileName = RootDirectory / $"nuspec/NChinese.nuspec";
-                Logger.Info($"Creating Nuget package with {nuspecFileName}");
-                NuGetPack(nuspecFileName, GitVersion.SemVer, nugetSettings => DefaultNuGetPack); 
+                Logger.Info($"Creating Nuget package with {nuspecFileName} and output to '{OutputDirectory}'");               
+                NuGetPack(nuspecFileName, nugetSettings => DefaultNuGetPack.SetBasePath(RootDirectory)); 
             });
 }

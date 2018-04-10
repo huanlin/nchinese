@@ -19,9 +19,9 @@
         <dependency id="System.ValueTuple" version="4.5.0-preview1-26216-02" exclude="Build,Analyzers" />
       </group>
     </dependencies>
-    <developmentDependency>False</<developmentDependency>
+    <developmentDependency>false</developmentDependency>
   </metadata>
   <files>
-    <file src="D:\Work\GitHub\huanlin\nchinese\src\NChinese\bin\Debug\net452\NChinese.dll" target="lib\net452\NChinese.dll" />
+    <file src="src\NChinese\bin\Debug\net452\NChinese.dll" target="lib\net452\NChinese.dll" />
   </files>
 </package>
