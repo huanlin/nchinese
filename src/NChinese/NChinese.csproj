@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
-    <Version>0.1.0-beta</Version>
+    <Version>0.1.0</Version>
     <Authors>Michael Tsai</Authors>
     <Company></Company>
     <Description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</Description>
