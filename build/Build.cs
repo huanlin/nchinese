@@ -46,8 +46,9 @@ class Build : NukeBuild
     Target Pack => _ => _
             .DependsOn(Compile)
             .Executes(() =>
-            {
-                string targetDir = RootDirectory.ToString() + "/nupkgs";
-                NuGetPack(targetDir, GitVersion.SemVer, nugetSettings => DefaultNuGetPack); 
+            {                
+                string nuspecFileName = RootDirectory / $"nuspec/NChinese.nuspec";
+                Logger.Info($"Creating Nuget package with {nuspecFileName}");
+                NuGetPack(nuspecFileName, GitVersion.SemVer, nugetSettings => DefaultNuGetPack); 
             });
 }
