@@ -50,6 +50,6 @@ class Build : NukeBuild
             {
                 string nuspecFileName = RootDirectory / $"nuspec/NChinese.nuspec";
                 Logger.Info($"Creating Nuget package with {nuspecFileName} and output to '{OutputDirectory}'");               
-                NuGetPack(nuspecFileName, nugetSettings => DefaultNuGetPack.SetBasePath(RootDirectory)); 
+                NuGetPack(nuspecFileName, s => DefaultNuGetPack.SetBasePath(RootDirectory)); 
             });
 }

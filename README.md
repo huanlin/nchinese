@@ -12,9 +12,18 @@ NChinese 是一套用來處理中文字詞的函式庫。主要的用途是將�
 >
 > 雖然以目前的作法，已經能夠同時支援注音與拼音，但考慮到 IFELanguage 是 COM 介面，而且跟微軟 Windows 的輸入法綁在一起，無法跨平台，因此我打算將來透過內建詞庫的方式來查詢中文字詞的注音和拼音。具體來說，詞庫的部分很可能會直接使用 [libchewing](https://github.com/chewing/libchewing) 的詞庫資料檔。
 
+## 開發工具
+
+ * Visual Studio 2017
+
 ## 相依套件
 
  * [NUnit](http://nunit.org/) 
+ 
+### 建置工具
+ 
+ * [Nuke Build](https://nuke.build/)
+ * [GitVersion](https://github.com/GitTools/GitVersion)
 
 ## 授權
 
