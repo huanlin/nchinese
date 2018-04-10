@@ -1,6 +1,6 @@
 # NChinese
 
-[![Build status](https://ci.appveyor.com/api/projects/status/mtuddcaa62v7kmta/branch/master?svg=true)](https://ci.appveyor.com/project/huanlin/nchinese/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/mtuddcaa62v7kmta/branch/master?svg=true)](https://ci.appveyor.com/project/huanlin/nchinese/branch/master) [![NuGet Badge](https://buildstats.info/nuget/nchinese)](https://www.nuget.org/packages/NChinese/)
 
 NChinese 是一套用來處理中文字詞的函式庫。主要的用途是將一串中文字的轉換成對應的拼音或注音符號（ㄅㄆㄇㄈ……）。
 
