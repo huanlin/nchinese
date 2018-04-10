@@ -1,5 +1,7 @@
 # NChinese
 
+[![Build status](https://ci.appveyor.com/api/projects/status/mtuddcaa62v7kmta/branch/master?svg=true)](https://ci.appveyor.com/project/huanlin/nchinese/branch/master)
+
 NChinese 是一套用來處理中文字詞的函式庫。主要的用途是將一串中文字的轉換成對應的拼音或注音符號（ㄅㄆㄇㄈ……）。
 
 > **作者註**
