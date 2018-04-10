@@ -48,8 +48,15 @@ class Build : NukeBuild
             .DependsOn(Compile)
             .Executes(() =>
             {
+                Logger.Info($"Nuget packages will be created in '{OutputDirectory}'");
+
+                var nugetSettings = DefaultNuGetPack.SetBasePath(RootDirectory);
                 string nuspecFileName = RootDirectory / $"nuspec/NChinese.nuspec";
-                Logger.Info($"Creating Nuget package with {nuspecFileName} and output to '{OutputDirectory}'");               
-                NuGetPack(nuspecFileName, s => DefaultNuGetPack.SetBasePath(RootDirectory)); 
+                Logger.Info($"Creating Nuget package with {nuspecFileName}");
+                NuGetPack(nuspecFileName, s => nugetSettings);
+
+                nuspecFileName = RootDirectory / $"nuspec/NChinese.Imm.nuspec";
+                Logger.Info($"Creating Nuget package with {nuspecFileName}");
+                NuGetPack(nuspecFileName, s => nugetSettings);
             });
 }

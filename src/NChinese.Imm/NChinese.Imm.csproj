@@ -9,8 +9,10 @@
     <PackageProjectUrl>https://github.com/huanlin/nchinese</PackageProjectUrl>
     <RepositoryUrl>https://github.com/huanlin/nchinese</RepositoryUrl>
     <PackageTags>chinese;pinyin;zhuyin;bopomofo;CJK;中文;漢字;注音;拼音</PackageTags>
-    <Version>1.0.0-beta</Version>
+    <Version>1.0.0</Version>
     <NeutralLanguage>en</NeutralLanguage>
+    <Copyright>Michael Tsai</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
