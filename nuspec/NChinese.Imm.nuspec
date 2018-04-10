@@ -18,6 +18,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="src\NChinese.Imm\bin\Debug\net452\NChinese.Imm.dll" target="lib\net452\NChinese.Imm.dll" />
+    <file src="src\NChinese\bin\Debug\net452\NChinese.dll" target="lib\net452\NChinese.dll" />
+    <file src="src\NChinese.Imm\bin\Debug\net452\NChinese.Imm.dll" target="lib\net452\NChinese.Imm.dll" />    
   </files>
 </package>
