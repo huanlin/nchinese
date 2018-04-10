@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".build", "..\build\.build.csproj", "{FCC08265-7440-487F-8CB6-134AD3FBC18A}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8CDF9743-E28C-4B27-8B28-A3D1BA55668D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NChinese", "NChinese\NChinese.csproj", "{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}"
@@ -27,6 +29,16 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Debug|x64.Build.0 = Debug|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Debug|x86.Build.0 = Debug|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Release|x64.ActiveCfg = Release|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Release|x64.Build.0 = Release|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Release|x86.ActiveCfg = Release|Any CPU
+		{FCC08265-7440-487F-8CB6-134AD3FBC18A}.Release|x86.Build.0 = Release|Any CPU
 		{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}.Debug|x64.ActiveCfg = Debug|Any CPU
