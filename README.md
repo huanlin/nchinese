@@ -16,7 +16,7 @@ NChinese 是一套用來處理中文字詞的函式庫。主要的用途是將�
 
  * Visual Studio 2017
 
-## 相依套件
+### 相依套件
 
  * [NUnit](http://nunit.org/) 
  
