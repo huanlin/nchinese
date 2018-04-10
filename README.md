@@ -26,6 +26,7 @@ NChinese 是一套用來處理中文字詞的函式庫。主要的用途是將�
  
  * [Nuke Build](https://nuke.build/)
  * [GitVersion](https://github.com/GitTools/GitVersion)
+ * [Appveyor](https://www.appveyor.com/) for Github 建置徽章（略過單元測試，因為 Appvevor 主機上無法啟動 IFELanguage COM 元件。）
 
 ## 授權
 
