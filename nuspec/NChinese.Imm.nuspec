@@ -3,8 +3,8 @@
   <metadata>
     <id>NChinese.Imm</id>
     <version>$version$</version>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Michael Tsai</authors>
+    <owners>Michael Tsai</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/huanlin/nchinese</projectUrl>
