@@ -467,7 +467,6 @@ namespace NChinese
             int toneIndex = 0; // 預設為輕聲。若音調查閱表裡沒找到，則表示為輕聲。
             for (int i = 0; i < input.Length; i++)
             {
-                // 找聲調
                 char current = input[i];
                 if (_pinyinToneTable.ContainsKey(current))
                 {
