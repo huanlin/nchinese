@@ -2,18 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>NChinese.Imm</id>
-    <version>0.1.1</version>
-    <authors>Michael Tsai</authors>
-    <owners>Michael Tsai</owners>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/huanlin/nchinese</projectUrl>
-    <description>NChinese.Imm provides helper classes for doing reverse conversion via IFELanguage COM objects. That is, you can use this library to get Zhuyin (aka BoPoMoFo) or Pinyin symbols for a Chinese string.</description>
+    <description>NChinese.Imm provides helper classes for doing reverse conversion via IFELanguage COM objects. 
+    That is, you can use this library to get Zhuyin (aka BoPoMoFo) or Pinyin symbols for a Chinese string.</description>
     <tags>chinese pinyin zhuyin bopomofo CJK 中文 漢字 注音 拼音</tags>
+    <copyright>Copyright (c) 2018 Michael Tsai (蔡煥麟)</copyright>
     <repository url="https://github.com/huanlin/nchinese" />
     <dependencies>
       <group targetFramework=".NETFramework4.5.2">
-        <dependency id="NChinese" version="0.1.1" exclude="Build,Analyzers" />
+        <dependency id="NChinese" version="$version$" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
