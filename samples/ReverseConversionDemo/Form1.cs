@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using NChinese;
 using NChinese.Imm;
+using NChinese.Phonetic;
 
 namespace ReverseConversionDemo
 {

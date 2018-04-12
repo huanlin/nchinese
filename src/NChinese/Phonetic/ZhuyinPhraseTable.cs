@@ -192,7 +192,7 @@ namespace NChinese.Phonetic
         /// 找出在指定的字串中出現的所有片語。
         /// </summary>
         /// <param name="text">字串。</param>
-        /// <returns>找到的片語集合，它是一個排序過的串列，排序的 key 是片語位於來源字串的的索引，Value 則是 ImmPhrase 型別的物件。</returns>
+        /// <returns>找到的片語集合，它是一個排序過的串列，排序的 key 是片語位於來源字串的的索引，Value 則是 ZhuyinPhrase 型別的物件。</returns>
         public SortedList<int, ZhuyinPhrase> FindPhrases(string text)
         {
             SortedList<int, ZhuyinPhrase> matchedPhrases = new SortedList<int, ZhuyinPhrase>();

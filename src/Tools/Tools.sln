@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildDictionaryFromChewingData", "BuildDictionaryFromChewingData\BuildDictionaryFromChewingData.csproj", "{DA46EB25-95A5-4F39-9316-ADCC952F8D09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA46EB25-95A5-4F39-9316-ADCC952F8D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA46EB25-95A5-4F39-9316-ADCC952F8D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA46EB25-95A5-4F39-9316-ADCC952F8D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA46EB25-95A5-4F39-9316-ADCC952F8D09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AF0E49B-5272-48FD-8195-A5FBA2250944}
+	EndGlobalSection
+EndGlobal

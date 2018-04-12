@@ -18,7 +18,14 @@
 
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="Serilog" Version="2.7.1-dev-00972" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0-preview1-26216-02" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\WordDictionary.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
