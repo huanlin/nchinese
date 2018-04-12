@@ -22,12 +22,12 @@ namespace Test.NChinese
         [TestCase("𠑗㒨𨉼")] // CJK 擴展 B 區
         [TestCase("𪜎𪡀𪞫")] // CJK 擴展 C 區
         [TestCase("𫞦𫟁𫠇")] // CJK 擴展 D 區
-        public void Should_IsUnihan_Return_True_For_CJK_Ideographs(string s)
+        public void Should_IsCJK_Return_True_For_CJK_Ideographs(string s)
         {
             var charEnum = StringInfo.GetTextElementEnumerator(s);
             while (charEnum.MoveNext())
             {
-                Assert.IsTrue(charEnum.GetTextElement().IsUnihan());
+                Assert.IsTrue(charEnum.GetTextElement().IsCJK());
             }           
         }
 
@@ -35,12 +35,12 @@ namespace Test.NChinese
         [TestCase("ㄅㄆㄇㄈ")] // 注音符號不算表意文字
         [TestCase("【」〇")]   // 中文全形符號
         [TestCase("あえかァィ")]   // 日文平假名和片假名
-        public void Should_IsUnihan_Return_False_For_Non_CJK_Ideographs(string s)
+        public void Should_IsCJK_Return_False_For_Non_CJK_Ideographs(string s)
         {
             var charEnum = StringInfo.GetTextElementEnumerator(s);
             while (charEnum.MoveNext())
             {
-                Assert.IsFalse(charEnum.GetTextElement().IsUnihan());
+                Assert.IsFalse(charEnum.GetTextElement().IsCJK());
             }
         }
 

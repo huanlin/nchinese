@@ -10,7 +10,7 @@ namespace NChinese
         /// </summary>
         /// <param name="aChar">類行為 String 的中文字元（unicode 字元不能以 char）</param>
         /// <returns></returns>
-        public static bool IsZhuyin(this string aChar)
+        public static bool IsZhuyinSymbol(this string aChar)
         {
             if (String.IsNullOrEmpty(aChar))
                 return false;
@@ -25,7 +25,7 @@ namespace NChinese
         /// </summary>
         /// <param name="aChar"></param>
         /// <returns></returns>
-        public static bool IsUnihan(this string aChar)
+        public static bool IsCJK(this string aChar)
         {
             if (String.IsNullOrEmpty(aChar))
                 return false;
@@ -63,7 +63,7 @@ namespace NChinese
             while (charEnum.MoveNext())
             {
                 string text = charEnum.GetTextElement();
-                if (text.IsUnihan())
+                if (text.IsCJK())
                 {
                     if (start < 0)
                     {
