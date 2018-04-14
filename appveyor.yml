@@ -1,3 +1,11 @@
-build:
-  project: src/NChinese.sln
-  
+image: Visual Studio 2017
+
+build_script:
+  - ps: .\build.ps1 compile
+
+branches:
+  only:
+    - develop
+    - main
+
+ 
