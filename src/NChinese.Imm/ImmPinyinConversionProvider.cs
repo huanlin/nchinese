@@ -12,7 +12,9 @@ namespace NChinese.Imm
             _imeService = new MsImeService(ImeClass.China);
         }
 
-        public bool FixForTraditionalChinese { get; set; } = true;
+        public bool IsAvailable => _imeService.IsReady;
+
+        public bool FixForTraditionalChinese { get; set; } = false;
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

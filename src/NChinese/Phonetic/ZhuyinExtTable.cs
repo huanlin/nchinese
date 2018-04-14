@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
 using System.IO;
+using System.Reflection;
+using System.Text;
 
 namespace NChinese.Phonetic
 {
@@ -14,13 +13,13 @@ namespace NChinese.Phonetic
     [Obsolete("此類別已經不需要，若有需要增加的字，請加入 CharZhuyinTable.txt。")]
     public class ZhuyinExtTable
     {
-        private static ZhuyinExtTable m_ImmExtTbl = null;
+        private static ZhuyinExtTable _zhuyinExtTbl = null;
 
-        private Dictionary<char, List<Zhuyin>> m_Table;  // 中文字與注音字根對照表，每一筆代表一個中文字的所有注音字根。
+        private Dictionary<char, List<Zhuyin>> _table;  // 中文字與注音字根對照表，每一筆代表一個中文字的所有注音字根。
 
         private ZhuyinExtTable()
         {
-            m_Table = new Dictionary<char, List<Zhuyin>>();
+            _table = new Dictionary<char, List<Zhuyin>>();
 
             Load();
         }
@@ -31,11 +30,11 @@ namespace NChinese.Phonetic
         /// <returns></returns>
         public static ZhuyinExtTable GetInstance()
         {
-            if (m_ImmExtTbl == null)
+            if (_zhuyinExtTbl == null)
             {
-                m_ImmExtTbl = new ZhuyinExtTable();
+                _zhuyinExtTbl = new ZhuyinExtTable();
             }
-            return m_ImmExtTbl;
+            return _zhuyinExtTbl;
         }
 
         #region 載入函式
@@ -83,9 +82,9 @@ namespace NChinese.Phonetic
                 ch = fields[0][0];
 
                 // 移除既有的項目，亦即後來載入的資料會蓋過之前載入的。
-                if (m_Table.ContainsKey(ch))
+                if (_table.ContainsKey(ch))
                 {
-                    m_Table.Remove(ch);
+                    _table.Remove(ch);
                 }
                 List<Zhuyin> zyList = new List<Zhuyin>();
                 for (int i = 1; i < fields.Length; i++)
@@ -93,7 +92,7 @@ namespace NChinese.Phonetic
                     Zhuyin zy = new Zhuyin(fields[i]);
                     zyList.Add(zy);
                 }
-                m_Table.Add(ch, zyList);  
+                _table.Add(ch, zyList);  
             }
         }
 
@@ -128,7 +127,7 @@ namespace NChinese.Phonetic
         {
             get
             {
-                List<Zhuyin> value = m_Table[chineseChar];
+                List<Zhuyin> value = _table[chineseChar];
                 return value;
             }
         }

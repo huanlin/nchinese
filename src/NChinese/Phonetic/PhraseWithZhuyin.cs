@@ -3,19 +3,21 @@ using System.Text;
 
 namespace NChinese.Phonetic
 {
-    public class WordData
+    public class PhraseWithZhuyin
     {      
+        public string Text { get; set; }
         public int Frequency { get; set; } = 0;
 
         public List<string> ZhuyinList { get; private set; }
 
-        public WordData()
+        public PhraseWithZhuyin()
         {
+            Text = null;
             Frequency = 0;
             ZhuyinList = new List<string>();
         }
 
-        public WordData(int frequency, List<string> bopomofoList)
+        public PhraseWithZhuyin(int frequency, List<string> bopomofoList)
         {
             Frequency = frequency;
             ZhuyinList = bopomofoList;
@@ -28,7 +30,7 @@ namespace NChinese.Phonetic
 
         public override bool Equals(object obj)
         {
-            var target = obj as WordData;
+            var target = obj as PhraseWithZhuyin;
             if (target == null)
                 return false;
 
@@ -47,9 +49,9 @@ namespace NChinese.Phonetic
         {
             // note: 不輸出字詞頻率
             var sb = new StringBuilder();
-            foreach (var zy in ZhuyinList)
+            foreach (var zhuyin in ZhuyinList)
             {
-                sb.Append(zy);
+                sb.Append(zhuyin);
                 sb.Append(" ");
             }
             return sb.ToString().Trim();

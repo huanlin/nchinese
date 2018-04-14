@@ -17,13 +17,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Phonetic\CharZhuyinTable.txt" />
+    <None Remove="Phonetic\ZhuyinExtTable.txt" />
+    <None Remove="Phonetic\ZhuyinPhraseTable.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Phonetic\CharZhuyinTable.txt" />
+    <EmbeddedResource Include="Phonetic\ZhuyinExtTable.txt" />
+    <EmbeddedResource Include="Phonetic\ZhuyinPhraseTable.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="NUnit" Version="3.10.1" />
     <PackageReference Include="Serilog" Version="2.7.1-dev-00972" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0-preview1-26216-02" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\WordDictionary.txt">
+    <None Update="Data\ZhuyinDictionary.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

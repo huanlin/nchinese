@@ -101,6 +101,53 @@ namespace NChinese.Imm
             }
         }
 
+        public static bool IsAvailable(ImeClass imeClass)
+        {
+            WinApi.Ole32.CoInitialize(IntPtr.Zero);
+
+            if (Thread.CurrentThread.GetApartmentState() == ApartmentState.MTA)
+            {
+                throw new Exception("Cannot run under Multiple Threaded Apartment mode because it will fail while creating COM object IFELanguage.");
+            }
+
+            MsIme.IFELanguage ifeLanguage = null;
+            try
+            {
+                int errCode = Ole32.CLSIDFromString(s_ImeClassNames[(int)imeClass], out Guid imeGuid);
+                WinBase.CheckError(errCode);
+
+                Guid feLangIID = new Guid(MsIme.Constants.IID_IFELanguage);
+
+                IntPtr ppv;
+
+                errCode = Ole32.CoCreateInstance(imeGuid, IntPtr.Zero, Ole32.CLSCTX_SERVER,
+                    feLangIID, out ppv);
+                WinBase.CheckError(errCode);
+
+                ifeLanguage = Marshal.GetTypedObjectForIUnknown(ppv, typeof(MsIme.IFELanguage)) as MsIme.IFELanguage;
+
+                errCode = ifeLanguage.Open();
+                WinBase.CheckError(errCode);
+
+                IntPtr cmodeCaps;
+                errCode = ifeLanguage.GetConversionModeCaps(out cmodeCaps);
+                WinBase.CheckError(errCode);
+            }
+            catch
+            {
+                try
+                {
+                    ifeLanguage?.Close();
+                }
+                catch
+                {
+                    // ignore error. 
+                }
+                return false;
+            }
+            return true;
+        }
+
         private void OpenIFELanguage()
         {
             if (_ifeLangOpened)

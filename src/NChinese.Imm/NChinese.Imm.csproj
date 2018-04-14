@@ -28,6 +28,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.7.1-dev-00972" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NChinese\NChinese.csproj" />
   </ItemGroup>
 

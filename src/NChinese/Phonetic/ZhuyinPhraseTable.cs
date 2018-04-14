@@ -28,13 +28,13 @@ namespace NChinese.Phonetic
     /// </summary>
     public sealed class ZhuyinPhraseTable
     {
-        private static ZhuyinPhraseTable m_PhraseTbl = null;
+        private static ZhuyinPhraseTable _phraseTable = null;
 
-        private Dictionary<string, List<Zhuyin>> m_Table;  // 中文片語的注音字根對照表，每一筆代表一個中文片語的注音字根。
+        private Dictionary<string, List<Zhuyin>> _table;  // 中文片語的注音字根對照表，每一筆代表一個中文片語的注音字根。
 
         private ZhuyinPhraseTable()
         {
-            m_Table = new Dictionary<string, List<Zhuyin>>();
+            _table = new Dictionary<string, List<Zhuyin>>();
 
             Load();
         }
@@ -45,11 +45,11 @@ namespace NChinese.Phonetic
         /// <returns></returns>
         public static ZhuyinPhraseTable GetInstance()
         {
-            if (m_PhraseTbl == null)
+            if (_phraseTable == null)
             {
-                m_PhraseTbl = new ZhuyinPhraseTable();
+                _phraseTable = new ZhuyinPhraseTable();
             }
-            return m_PhraseTbl;
+            return _phraseTable;
         }
 
         #region 載入函式
@@ -107,9 +107,9 @@ namespace NChinese.Phonetic
             phrase = fields[0];
 
             // 移除既有的項目，亦即後來載入的資料會蓋過之前載入的。
-            if (m_Table.ContainsKey(phrase))
+            if (_table.ContainsKey(phrase))
             {
-                m_Table.Remove(phrase);
+                _table.Remove(phrase);
             }
             List<Zhuyin> zyList = new List<Zhuyin>();
             for (int i = 1; i < fields.Length; i++)
@@ -117,7 +117,7 @@ namespace NChinese.Phonetic
                 Zhuyin zy = new Zhuyin(fields[i]);
                 zyList.Add(zy);
             }
-            m_Table.Add(phrase, zyList);
+            _table.Add(phrase, zyList);
 
             return true;
         }
@@ -154,7 +154,7 @@ namespace NChinese.Phonetic
         {
             get
             {
-                List<Zhuyin> value = m_Table[phrase];
+                List<Zhuyin> value = _table[phrase];
                 return value;
             }
         }
@@ -164,7 +164,7 @@ namespace NChinese.Phonetic
         /// </summary>
         public void Reset()
         {
-            m_Table.Clear();
+            _table.Clear();
             Load();
         }
 
@@ -175,7 +175,7 @@ namespace NChinese.Phonetic
         /// <returns>注音符號，每個中文字固定傳回四個字元長度的注音符號，其中可能包含全型空白，例如：「ㄕ　ㄜˊ」。</returns>
         public string GetZhyuinSymbols(string phrase)
         {
-            List<Zhuyin> zyList = m_Table[phrase];
+            List<Zhuyin> zyList = _table[phrase];
             if (zyList == null)
             {
                 return "";
@@ -204,7 +204,7 @@ namespace NChinese.Phonetic
             ZhuyinPhrase immPhrase;
             List<Zhuyin> zhuyinList;
 
-            foreach (string phrase in m_Table.Keys)
+            foreach (string phrase in _table.Keys)
             {
                 start = 0;
                 end = text.Length-1;
@@ -215,7 +215,7 @@ namespace NChinese.Phonetic
                     if (idx < 0)
                         break;
                     // 有找到，記錄位置、取得注音字根，並繼續往後面找。
-                    zhuyinList = m_Table[phrase];
+                    zhuyinList = _table[phrase];
                     immPhrase = new ZhuyinPhrase(phrase, zhuyinList);
                     matchedPhrases.Add(idx, immPhrase);
                     start = idx + phrase.Length;

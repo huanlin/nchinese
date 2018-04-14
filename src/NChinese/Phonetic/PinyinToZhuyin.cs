@@ -6,9 +6,10 @@ namespace NChinese.Phonetic
 {
     public static class PinyinToZhuyin
     {
-
+        private const string ZhuyinTones = "˙\x02c9ˊˇˋ";
         private static Dictionary<string, string> _pinyinToZhuyinTable;
         private static Dictionary<char, string> _pinyinToneTable;
+
 
         static PinyinToZhuyin()
         {
@@ -198,9 +199,9 @@ namespace NChinese.Phonetic
                 { "long",   "ㄌㄨㄥ" },
                 { "lou",    "ㄌㄡ" },
                 { "lu",     "ㄌㄨ" },
-                { "lü",     "ㄌㄩ" },
+                { "lv",     "ㄌㄩ" },
                 { "luan",   "ㄌㄨㄢ" },
-                { "lüe",    "ㄌㄩㄝ" },
+                { "lve",    "ㄌㄩㄝ" },
                 { "lun",    "ㄌㄨㄣ" },
                 { "luo",    "ㄌㄨㄛ" },
                 { "ma",     "ㄇㄚ" },
@@ -454,7 +455,7 @@ namespace NChinese.Phonetic
                 { 'ǜ', "v4" },
                 { 'ń', "n2" },
                 { 'ň', "n3" },
-                { '', "m2" }
+                { '', "m2" }  // May be not used.
             };
         }
 
@@ -482,10 +483,9 @@ namespace NChinese.Phonetic
             {
                 throw new Exception($"轉換失敗! 無此拼音組合：{pinyin}");
             }
-
-            string zhuyinTones = "˙\x02c9ˊˇˋ";
+            
             string zhuyin = _pinyinToZhuyinTable[pinyin];
-            return zhuyin + zhuyinTones[toneIndex];
+            return zhuyin + ZhuyinTones[toneIndex];
         }
     }
 }

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Serilog;
 
 namespace NChinese.Phonetic
 {
-    public class WordDictionary : Dictionary<string, WordData>
+    /// <summary>
+    /// 此類別會利用內建辭庫字典來反查注音字根。
+    /// </summary>
+    public class ZhuyinDictionary : Dictionary<string, PhraseWithZhuyin>
     {
         public override int GetHashCode()
         {
@@ -16,7 +20,7 @@ namespace NChinese.Phonetic
 
         public override bool Equals(object obj)
         {
-            var target = obj as WordDictionary;
+            var target = obj as ZhuyinDictionary;
             if (target == null)
                 return false;
             if (ReferenceEquals(this, target))
@@ -33,6 +37,16 @@ namespace NChinese.Phonetic
             return true;
         }
 
+        public async Task LoadFromDefaultFileAsync()
+        {
+            const string DictFileName = "ZhuyinDictionary.txt";
+
+            var assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var filename = Path.Combine(assemblyDirectory, "Data\\" + DictFileName);
+
+            await LoadFromFileAsync(filename);
+        }
+
         public async Task LoadFromFileAsync(string filename)
         {
             if (!File.Exists(filename))
@@ -45,7 +59,7 @@ namespace NChinese.Phonetic
                 string line = await reader.ReadLineAsync();
                 while (line != null)
                 {
-
+                    AddWord(line);
 
                     line = await reader.ReadLineAsync();
                 }
@@ -84,25 +98,26 @@ namespace NChinese.Phonetic
                 }
 
                 // 如果片語已經存在表中，則覆蓋之。
-                WordData wordData = null;
+                PhraseWithZhuyin phrase = null;
                 if (ContainsKey(key)) 
                 {
-                    wordData = this[key];
-                    wordData.ZhuyinList.Clear();
+                    phrase = this[key];
+                    phrase.ZhuyinList.Clear();
                 }
                 else
                 {
-                    wordData = new WordData();
-                    Add(key, wordData);
+                    phrase = new PhraseWithZhuyin();
+                    Add(key, phrase);
                 }
 
-                wordData.Frequency = freq;
+                phrase.Text = key;
+                phrase.Frequency = freq;
                 for (int i = phoneticIndex; i < parts.Length; i++)
                 {
-                    wordData.ZhuyinList.Add(parts[i]);
+                    phrase.ZhuyinList.Add(parts[i]);
                 }
                 
-                Log.Verbose("加入字詞: {Word} {Freq} {@Data}", key, freq, wordData);
+                Log.Verbose("加入字詞: {Phrase} {Freq} {@Zhuyin}", key, freq, phrase.ZhuyinList);
                 return true;
             }
             Log.Warning($"格式不正確: {str}");

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Diagnostics;
 
 namespace NChinese.Phonetic
 {
@@ -13,7 +11,6 @@ namespace NChinese.Phonetic
     /// </summary>
     public class Zhuyin
     {
-        private ZhuyinTone m_Tone;
         private char[] m_Symbols;   // 固定三個字元長，依序為聲符、介符、韻符（沒有的部分填空白）。
 
 
@@ -44,7 +41,7 @@ namespace NChinese.Phonetic
 
         public Zhuyin()
         {
-            m_Tone = ZhuyinTone.Tone1; // 預設為一聲
+            Tone = ZhuyinTone.Tone1; // 預設為一聲
             m_Symbols = new char[3];
             m_Symbols[0] = ' ';
             m_Symbols[1] = ' ';
@@ -70,7 +67,7 @@ namespace NChinese.Phonetic
             }
 
             // 拷貝成員
-            this.m_Tone = zy.m_Tone;
+            this.Tone = zy.Tone;
             zy.m_Symbols.CopyTo(m_Symbols, 0);
         }
 
@@ -93,20 +90,20 @@ namespace NChinese.Phonetic
             m_Symbols[2] = s[2];
 
             // 取出音調
-            m_Tone = ZhuyinTone.Tone1;  // 預設為一聲
+            Tone = ZhuyinTone.Tone1;  // 預設為一聲
             switch (s[3])
             {
                 case 'ˊ':
-                    m_Tone = ZhuyinTone.Tone2;
+                    Tone = ZhuyinTone.Tone2;
                     break;
                 case 'ˇ':
-                    m_Tone = ZhuyinTone.Tone3;
+                    Tone = ZhuyinTone.Tone3;
                     break;
                 case 'ˋ':
-                    m_Tone = ZhuyinTone.Tone4;
+                    Tone = ZhuyinTone.Tone4;
                     break;
                 case Tone0Char:
-                    m_Tone = ZhuyinTone.Tone0;
+                    Tone = ZhuyinTone.Tone0;
                     break;
                 default:
                     break;
@@ -183,7 +180,7 @@ namespace NChinese.Phonetic
         /// <returns></returns>
         private char GetToneChar()
         {
-            int i = Convert.ToInt32(m_Tone);
+            int i = Convert.ToInt32(Tone);
             return Zhuyin.ToneCharacters[i];
         }
 
@@ -194,7 +191,7 @@ namespace NChinese.Phonetic
             if (this == zy)
                 return true;
 
-            if (this.m_Tone != zy.m_Tone)
+            if (this.Tone != zy.Tone)
                 return false;
             for (int i = 0; i < m_Symbols.Length; i++)
             {
@@ -211,7 +208,7 @@ namespace NChinese.Phonetic
             {
                 hash += m_Symbols[i].GetHashCode();
             }
-            hash += m_Tone.GetHashCode();
+            hash += Tone.GetHashCode();
 
             return hash;
         }
@@ -429,11 +426,7 @@ namespace NChinese.Phonetic
 
         #region 屬性
 
-        public ZhuyinTone Tone
-        {
-            get { return m_Tone; }
-            set { m_Tone = value; }
-        }
+        public ZhuyinTone Tone { get; set; }
 
         public string Value
         {
