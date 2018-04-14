@@ -39,7 +39,7 @@ namespace NChinese.Phonetic
         public void Load()
         {
             Assembly asmb = Assembly.GetExecutingAssembly();
-            string resourceName = this.GetType().FullName + ".txt"; // Note: 這種寫法可以避免寫死的 namsepace，而且用於 obfuscator 時也能正常運作。
+            string resourceName = GetType().FullName + ".txt"; 
             Stream stream = asmb.GetManifestResourceStream(resourceName);
             if (stream == null)
             {
@@ -94,9 +94,10 @@ namespace NChinese.Phonetic
             if (fields.Length < 3)
                 return;
 
-            CharZhuyinInfo charInfo = new CharZhuyinInfo();
-
-            charInfo.Character = fields[0]; // 中文字元
+            CharZhuyinInfo charInfo = new CharZhuyinInfo
+            {
+                Character = fields[0] // 中文字元
+            };
 
             int freq = Convert.ToInt32(fields[1]); // 使用頻率 (0/1/2)
             if (freq >= m_CharListsByFreq.Length)  // 防錯：修正使用頻率.

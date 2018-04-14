@@ -23,6 +23,5 @@
   </metadata>
   <files>
     <file src="src\NChinese\bin\Debug\net452\NChinese.dll" target="lib\net452\NChinese.dll" />
-    <file src="src\NChinese\bin\Debug\net452\Data\ZhuyinDictionary.txt" target="lib\net452\Data\ZhuyinDictionary.txt" />
   </files>
 </package>

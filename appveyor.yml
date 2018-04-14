@@ -1,8 +1,8 @@
 image: Visual Studio 2017
 
-build_script:
-  - ps: .\build.ps1 compile
-
+build:
+  project: src\NChinese.sln
+  
 branches:
   only:
     - develop

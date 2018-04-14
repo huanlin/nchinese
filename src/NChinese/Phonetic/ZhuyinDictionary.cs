@@ -13,6 +13,20 @@ namespace NChinese.Phonetic
     /// </summary>
     public class ZhuyinDictionary : Dictionary<string, PhraseWithZhuyin>
     {
+        private static ZhuyinDictionary _instance;
+
+        private ZhuyinDictionary() { }
+
+        public static async Task<ZhuyinDictionary> GetInstanceAsync()
+        {
+            if (_instance == null)
+            {
+                _instance = new ZhuyinDictionary();
+                await _instance.LoadFromResourceAsync();
+            }
+            return _instance;
+        }
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
@@ -37,6 +51,28 @@ namespace NChinese.Phonetic
             return true;
         }
 
+        /// <summary>
+        /// 從組件資源中載入對照表。
+        /// </summary>
+
+        public async Task LoadFromResourceAsync()
+        {
+            Assembly asmb = Assembly.GetExecutingAssembly();
+            string resourceName = GetType().FullName + ".txt"; 
+            Stream stream = asmb.GetManifestResourceStream(resourceName);
+            if (stream == null)
+            {
+                throw new Exception("ZhuyinDictionary.LoadFromResource 找不到資源: " + resourceName);
+            }
+            using (stream)
+            {
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    await LoadAsync(reader);
+                }
+            }
+        }
+
         public async Task LoadFromDefaultFileAsync()
         {
             const string DictFileName = "ZhuyinDictionary.txt";
@@ -56,14 +92,23 @@ namespace NChinese.Phonetic
 
             using (var reader = new StreamReader(filename, Encoding.UTF8))
             {
-                string line = await reader.ReadLineAsync();
-                while (line != null)
-                {
-                    AddWord(line);
-
-                    line = await reader.ReadLineAsync();
-                }
+                await LoadAsync(reader);
             }
+        }
+
+        private async Task LoadAsync(StreamReader reader)
+        {
+            Clear();
+
+            string line = await reader.ReadLineAsync();
+            while (line != null)
+            {
+                AddWord(line);
+
+                line = await reader.ReadLineAsync();
+            }
+
+            Log.Information($"ZhuyinDictionary 已載入字典資料。總計 {Count} 個字／詞。");
         }
 
         /// <summary>
@@ -89,7 +134,7 @@ namespace NChinese.Phonetic
                 int phoneticIndex = 2;
                 try
                 {
-                    freq = Convert.ToInt32(parts[1]);               
+                    freq = Convert.ToInt32(parts[1]);
                 }
                 catch
                 {
@@ -99,7 +144,7 @@ namespace NChinese.Phonetic
 
                 // 如果片語已經存在表中，則覆蓋之。
                 PhraseWithZhuyin phrase = null;
-                if (ContainsKey(key)) 
+                if (ContainsKey(key))
                 {
                     phrase = this[key];
                     phrase.ZhuyinList.Clear();
@@ -116,7 +161,7 @@ namespace NChinese.Phonetic
                 {
                     phrase.ZhuyinList.Add(parts[i]);
                 }
-                
+
                 Log.Verbose("加入字詞: {Phrase} {Freq} {@Zhuyin}", key, freq, phrase.ZhuyinList);
                 return true;
             }

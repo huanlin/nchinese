@@ -8,8 +8,7 @@ namespace NChinese.Phonetic
 
         public ZhuyinReverseConversionProvider()
         {
-            _dict = new ZhuyinDictionary();
-            _dict.LoadFromDefaultFileAsync().GetAwaiter().GetResult();
+            _dict = ZhuyinDictionary.GetInstanceAsync().GetAwaiter().GetResult();
         }
 
         public bool IsAvailable => true;

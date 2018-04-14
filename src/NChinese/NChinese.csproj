@@ -17,16 +17,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\ZhuyinDictionary.txt" />
     <None Remove="Phonetic\CharZhuyinTable.txt" />
     <None Remove="Phonetic\ZhuyinExtTable.txt" />
     <None Remove="Phonetic\ZhuyinPhraseTable.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Data\ZhuyinDictionary.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Phonetic\ZhuyinDictionary.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
