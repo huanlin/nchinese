@@ -13,7 +13,7 @@ NChinese 是一套用來處理中文字詞的函式庫。目前具備的功能�
  * [NUnit](http://nunit.org/) 
  * [Serilog](https://serilog.net/)
 
-另外，中文字典檔案 ZhuyinDictionary.txt 是以 [libchewing](https://github.com/chewing/libchewing) 為藍本，再經過工具加工之後所產生的。
+另外，注音字典檔案 [ZhuyinDictionary.txt](https://github.com/huanlin/nchinese/blob/master/src/NChinese/Phonetic/ZhuyinDictionary.txt) 是以 [libchewing](https://github.com/chewing/libchewing) 的檔案（tsi.src）為藍本，再經過工具加工之後所產生的。
 
 ### 建置工具
  
@@ -25,4 +25,4 @@ NChinese 是一套用來處理中文字詞的函式庫。目前具備的功能�
 
 Copyright(c) 2018 Michael Tsai.
 
-此開源專案是採用 MIT 授權。
+此開源專案是採用 [MIT 授權](https://github.com/huanlin/nchinese/blob/master/LICENSE)。
