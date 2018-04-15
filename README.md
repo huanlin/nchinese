@@ -55,7 +55,7 @@ var pinyinProvicer = new ImmPinyinReverseConversionProvider();
 string[] pinyininArray = zhuyinProvicer.Convert("便宜又方便得不得了");
 
 foreach (var s in zhuyinArray)
-    Console.Write($"{s} ");  // 輸出: pián", "yi", "yòu", "fāng", "biàn", "de", "bù", "dé", "liǎo" 
+    Console.Write($"{s} "); 
 ```
 
 執行結果：
@@ -70,7 +70,7 @@ pián yi yòu fāng biàn de bù dé liǎo
 
 NChinese.Imm 套件裡面還有一個 `ImmZhuyinReverseConversionProvider`，用途跟 `NChinese.ZhuyinReverseConversionProvider` 一樣是反查注音字根，但是它在內部實作上，其實是先用 `ImmPinyinReverseConversionProvider` 取得拼音字根，然後再使用 `PinyinToZhuyin` 類別來把拼音轉換成注音符號。
 
-> 為什麼 `ImmZhuyinReverseConversionProvider` 不直接使用 IFELanguage 的 API 來取得注音字根呢？這是因為根據我的測試，即使 Windows 10 有安裝微軟注音輸入法，IFELanguage COM API 都無法使用 "MSIME.Taiwan" 來反查注音字根，只剩下 "MSIME.China" 和 "MSIME.Japan"（反查日本平假名、片假名）可用。這也是為什麼 NChinese 套件要使用內建詞庫的原因：要利用微軟 Windows 底層的 API 來反查注音字根，已經不太可能了。
+> 為什麼 `ImmZhuyinReverseConversionProvider` 不直接使用 IFELanguage 的 API 來取得注音字根呢？這是因為根據我的測試，即使 Windows 10 有安裝微軟注音輸入法，IFELanguage COM API 都無法使用 "MSIME.Taiwan" 來反查注音字根，只剩下 "MSIME.China" 和 "MSIME.Japan"（反查日本平假名、片假名）可用。這也是為什麼 NChinese 套件要使用內建詞庫的原因：要利用微軟 Windows 底層的 API 來反查注音字根，已經不太可能了（就算可透過安裝其他軟體或匯入 registry 的方式來恢復 "MSIME.Taiwan"，這種作法還是不靠譜）。
 
 ## 開發工具
 
