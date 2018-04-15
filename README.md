@@ -41,7 +41,7 @@ foreach (var s in zhuyinArray)
 ㄆㄧㄢˊ "ㄧˊ ㄧㄡˋ ㄈㄤ ㄅㄧㄢˋ ㄉㄜ˙ ㄅㄨˋ ㄉㄜˊ ㄌㄧㄠˇ
 ```
 
-中文詞庫與注音字根的資料，是以 [libchewing](https://github.com/chewing/libchewing) 的檔案（tsi.src）為藍本，再經過工具加工之後所產生的。所以透過上述方法所取得的注音字根，在讀音方面都是比較符合台灣的發音習慣。
+中文詞庫與注音字根的資料，是以 [libchewing](https://github.com/chewing/libchewing) 的檔案（tsi.src）為藍本，再經過工具加工之後所產生的。所以透過上述方法所取得的注音字根，在讀音方面比較符合台灣的發音習慣。
 
 ### 範例：反查拚音字根
 
