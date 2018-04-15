@@ -10,8 +10,6 @@ namespace Test.NChinese
     [TestFixture]
     public class StringExtensionsTests
     {
-
-
         [SetUp]
         public void SetUp()
         {

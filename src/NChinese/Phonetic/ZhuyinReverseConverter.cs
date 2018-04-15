@@ -17,27 +17,27 @@ namespace NChinese.Phonetic
         /// </summary>
         /// <param name="aChineseText">中文字串。</param>
         /// <returns>字串陣列。每個元素是一個中文字的注音字根，長度固定為 4，例如："ㄅ　ㄢ　"。</returns>
-        public string[] GetBopomofo(string aChineseText)
+        public string[] GetZhuyin(string aChineseText)
         {
-            string[] bopomofoArray = _converter.Convert(aChineseText);
+            string[] zhuyinArray = _converter.Convert(aChineseText);
 
             // 調整注音碼，使其長度補滿四個字元.
-            for (int i = 0; i < bopomofoArray.Length; i++)
+            for (int i = 0; i < zhuyinArray.Length; i++)
             {
-                bopomofoArray[i] = Zhuyin.FillSpaces(bopomofoArray[i]);
+                zhuyinArray[i] = Zhuyin.FillSpaces(zhuyinArray[i]);
             }
 
-            return bopomofoArray;
+            return zhuyinArray;
         }
 
         /// <summary>
-        /// 利用 IFELanguage 取得整串中文字的注音碼，同時根據預先指定的詞庫來修正注音。
+        /// 反查整串中文字的注音碼，並且利用預先指定的擴充詞庫來修正注音。
         /// </summary>
         /// <param name="aChineseText">中文字串。</param>
         /// <returns>包含注音字根的字串陣列。每個元素代表輸入字串中對應位置的字元的注音字根，而且長度固定為 4。</returns>
-        public string[] GetBopomofoWithPhraseTable(string aChineseText)
+        public string[] GetZhuyinWithPhraseTable(string aChineseText)
         {
-            string[] bopomofoArray = GetBopomofo(aChineseText);
+            string[] zhuyinArray = GetZhuyin(aChineseText);
 
             // 利用擴充詞庫字根表修正 API 傳回的字根。
 
@@ -56,11 +56,11 @@ namespace NChinese.Phonetic
 
                 foreach (Zhuyin zy in phrase.ZhuyinList)
                 {
-                    bopomofoArray[srcIndex] = zy.ToString(true);    // 儲存注音字根時，會以全型空白補足 4 碼。
+                    zhuyinArray[srcIndex] = zy.ToString(true);    // 儲存注音字根時，會以全型空白補足 4 碼。
                     srcIndex++;
                 }
             }
-            return bopomofoArray;
+            return zhuyinArray;
         }
 
     }
