@@ -1,10 +1,11 @@
 image: Visual Studio 2017
 
-before_build:
-- cmd: dotnet restore src
+build_script:
+  - ps: .\build.ps1 compile
 
-build:
-  project: src\NChinese.sln
-  verbosity: minimal
-
+branches:
+  only:
+    - develop
+    - master
+  
 test: off
