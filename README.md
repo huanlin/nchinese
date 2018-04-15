@@ -1,6 +1,6 @@
 # NChinese
 
-[![Build status](https://ci.appveyor.com/api/projects/status/mtuddcaa62v7kmta/branch/master?svg=true)](https://ci.appveyor.com/project/huanlin/nchinese/branch/master) [![NuGet Badge](https://buildstats.info/nuget/nchinese)](https://www.nuget.org/packages/NChinese/) [![Built with](https://img.shields.io/badge/built%20with-nuke--build-blue.svg)](https://nuke.build/)
+[![Build status](https://ci.appveyor.com/api/projects/status/mtuddcaa62v7kmta/branch/master?svg=true)](https://ci.appveyor.com/project/huanlin/nchinese/branch/master)  [![NuGet Badge](https://buildstats.info/nuget/nchinese)](https://www.nuget.org/packages/NChinese/)   [![Built with](https://img.shields.io/badge/built%20with-nuke--build-blue.svg)](https://nuke.build/)
 
 NChinese 是一套用來處理中文字詞的函式庫。目前具備的功能，主要是反查一串中文字的注音或拼音。
 
