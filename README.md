@@ -87,6 +87,12 @@ NChinese.Imm 套件裡面還有一個 `ImmZhuyinReverseConversionProvider`，用
  * [GitVersion](https://github.com/GitTools/GitVersion)
  * [Appveyor](https://www.appveyor.com/) 
 
+## 未來可能加入什麼功能
+
+* 中文簡繁轉換
+* 注音符號轉成拼音
+* 捨棄 NChinese.Imm，讓 NChinese 完全支援 .NET Standard 2.0。
+
 ## 授權協議
 
 Copyright(c) 2018 Michael Tsai.
