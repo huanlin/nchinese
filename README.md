@@ -81,8 +81,6 @@ NChinese.Imm 套件裡面還有一個 `ImmZhuyinReverseConversionProvider`，用
  * [NUnit](http://nunit.org/) 
  * [Serilog](https://serilog.net/)
 
-另外，注音字典檔案 [ZhuyinDictionary.txt](https://github.com/huanlin/nchinese/blob/master/src/NChinese/Phonetic/ZhuyinDictionary.txt) 是以 [libchewing](https://github.com/chewing/libchewing) 的檔案（tsi.src）為藍本，再經過工具加工之後所產生的。
-
 **建置工具**
  
  * [Nuke Build](https://nuke.build/)
@@ -94,3 +92,6 @@ NChinese.Imm 套件裡面還有一個 `ImmZhuyinReverseConversionProvider`，用
 Copyright(c) 2018 Michael Tsai.
 
 此開源專案是採用 [MIT 授權](https://github.com/huanlin/nchinese/blob/master/LICENSE)。
+
+另外，注音字典 [ZhuyinDictionary.txt](https://github.com/huanlin/nchinese/blob/master/src/NChinese/Phonetic/ZhuyinDictionary.txt) 是以新酷音 [libchewing](https://github.com/chewing/libchewing) 的檔案（tsi.src）為藍本，再經過工具加工之後所產生的。新酷音的授權協議是 [GNU LGPL v2.1](https://github.com/chewing/libchewing/blob/master/COPYING)。
+
