@@ -13,7 +13,7 @@ class Build : NukeBuild
 
     // Auto-injection fields:
 
-    [Nuke.Common.Tools.GitVersion.GitVersionAttribute] readonly GitVersion GitVersion;
+    [Nuke.Common.Tools.GitVersion.GitVersion] readonly GitVersion GitVersion;
     // Semantic versioning. Must have 'GitVersion.CommandLine' referenced.
 
     // [GitRepository] readonly GitRepository GitRepository;
