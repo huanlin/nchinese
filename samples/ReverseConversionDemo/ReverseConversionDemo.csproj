@@ -79,14 +79,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NChinese.Imm\NChinese.Imm.csproj">
-      <Project>{27b11bee-f94f-4370-bdcd-fc280bbff278}</Project>
-      <Name>NChinese.Imm</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\NChinese\NChinese.csproj">
-      <Project>{2C621CC8-D016-41D5-9FF2-5B49DC9560F0}</Project>
-      <Name>NChinese</Name>
-    </ProjectReference>
+    <PackageReference Include="NChinese">
+      <Version>0.3.3</Version>
+    </PackageReference>
+    <PackageReference Include="NChinese.Imm">
+      <Version>0.3.3</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog">
+      <Version>2.7.1-dev-00972</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
