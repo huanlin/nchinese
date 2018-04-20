@@ -15,7 +15,7 @@
     <repository url="https://github.com/huanlin/nchinese" />
     <dependencies>
       <group targetFramework=".NETFramework4.5.2">
-        <dependency id="Serilog" version="2.7.1" exclude="Build,Analyzers" />
+        <dependency id="Serilog" version="2.7.1-dev-00972" exclude="Build,Analyzers" />
         <dependency id="System.ValueTuple" version="4.5.0-preview1-26216-02" exclude="Build,Analyzers" />
       </group>
     </dependencies>
