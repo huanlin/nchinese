@@ -9,7 +9,7 @@ namespace NChinese.Phonetic
 
         public ZhuyinReverseConverter(IReverseConversionProvider revConvProvider)
         {
-            _converter = revConvProvider ?? throw new ArgumentNullException(nameof(revConvProvider));
+            _converter = revConvProvider ?? new ZhuyinReverseConversionProvider();
         }
 
         /// <summary>
