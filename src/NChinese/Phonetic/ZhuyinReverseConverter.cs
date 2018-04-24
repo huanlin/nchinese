@@ -7,7 +7,7 @@ namespace NChinese.Phonetic
     {
         private IReverseConversionProvider _converter;
 
-        public ZhuyinReverseConverter(IReverseConversionProvider revConvProvider)
+        public ZhuyinReverseConverter(IReverseConversionProvider revConvProvider=null)
         {
             _converter = revConvProvider ?? new ZhuyinReverseConversionProvider();
         }
