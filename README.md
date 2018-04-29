@@ -28,8 +28,8 @@ NChinese 包含兩個套件：
 using NChinese;
 
 // 取得一串中文字的注音字根
-var zhuyinProvicer = new ZhuyinReverseConversionProvider();
-string[] zhuyinArray = zhuyinProvicer.Convert("便宜又方便得不得了");
+var zhuyinProvider = new ZhuyinReverseConversionProvider();
+string[] zhuyinArray = zhuyinProvider.Convert("便宜又方便得不得了");
 
 foreach (var s in zhuyinArray)
     Console.Write($"{s} ");  
@@ -38,7 +38,7 @@ foreach (var s in zhuyinArray)
 執行結果:
 
 ```txt
-ㄆㄧㄢˊ "ㄧˊ ㄧㄡˋ ㄈㄤ ㄅㄧㄢˋ ㄉㄜ˙ ㄅㄨˋ ㄉㄜˊ ㄌㄧㄠˇ
+ㄆㄧㄢˊ ㄧˊ ㄧㄡˋ ㄈㄤ ㄅㄧㄢˋ ㄉㄜ˙ ㄅㄨˋ ㄉㄜˊ ㄌㄧㄠˇ
 ```
 
 中文詞庫與注音字根的資料，是以 [libchewing](https://github.com/chewing/libchewing) 的檔案（tsi.src）為藍本，再經過工具加工之後所產生的。所以透過上述方法所取得的注音字根，在讀音方面比較符合台灣的發音習慣。
@@ -51,8 +51,8 @@ foreach (var s in zhuyinArray)
 using NChinese.Imm;
 
 // 取得一串中文字的拼音字根
-var pinyinProvicer = new ImmPinyinReverseConversionProvider();
-string[] pinyininArray = zhuyinProvicer.Convert("便宜又方便得不得了");
+var pinyinProvider = new ImmPinyinReverseConversionProvider();
+string[] pinyininArray = pinyinProvider.Convert("便宜又方便得不得了");
 
 foreach (var s in zhuyinArray)
     Console.Write($"{s} "); 
