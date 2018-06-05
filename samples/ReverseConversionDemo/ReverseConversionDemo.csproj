@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <RuntimeIdentifiers>win;osx.10.11-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
-  </PropertyGroup>  
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,13 +83,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NChinese">
-      <Version>0.3.3</Version>
+      <Version>0.3.8</Version>
     </PackageReference>
     <PackageReference Include="NChinese.Imm">
-      <Version>0.3.3</Version>
+      <Version>0.3.8</Version>
     </PackageReference>
     <PackageReference Include="Serilog">
-      <Version>2.7.1-dev-00972</Version>
+      <Version>2.7.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NChinese.Imm\NChinese.Imm.csproj" />
     <ProjectReference Include="..\..\src\NChinese\NChinese.csproj" />
   </ItemGroup>
 </Project>
