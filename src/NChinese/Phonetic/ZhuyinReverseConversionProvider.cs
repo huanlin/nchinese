@@ -6,9 +6,9 @@ namespace NChinese.Phonetic
     {
         private ZhuyinDictionary _dict;
 
-        public ZhuyinReverseConversionProvider()
+        public ZhuyinReverseConversionProvider(bool skipLoadingDictionary = false)
         {
-            _dict = ZhuyinDictionary.GetInstanceAsync().GetAwaiter().GetResult();
+            _dict = ZhuyinDictionary.GetInstanceAsync(skipLoadingDictionary).GetAwaiter().GetResult();
         }
 
         public bool IsAvailable => true;
@@ -19,7 +19,7 @@ namespace NChinese.Phonetic
         public bool AutoFillSpaces { get; set; } = false;
 
         /// <summary>
-        /// 
+        /// 把輸入字串轉換成注音字根陣列。
         /// </summary>
         /// <param name="input">一個或一串中文字。</param>
         /// <returns>字串陣列。每個元素是一個中文字的注音字根，長度固定為 4，例如："ㄅ　ㄢ　"。</returns>
@@ -29,6 +29,14 @@ namespace NChinese.Phonetic
 
             var result = new List<string>();
             GetZhuyinFromDictionary(input, result, MaxPhraseLength);
+
+            if (result.Count == 0) // 防錯：萬一找不到任何注音字根，還是要返回一個符合字串長度的陣列。
+            {
+                for (int i = 0; i < input.Length; i++)
+                {
+                    result.Add(string.Empty);
+                }
+            }
 
             if (AutoFillSpaces)
             {

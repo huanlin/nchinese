@@ -17,12 +17,20 @@ namespace NChinese.Phonetic
 
         private ZhuyinDictionary() { }
 
-        public static async Task<ZhuyinDictionary> GetInstanceAsync()
+        /// <summary>
+        /// 建立 ZhuyinDictionary 物件。
+        /// </summary>
+        /// <param name="skipLoadingDictionary">字典檔很大，除錯時要花很長時間才能載入完畢。此時可將此參數設定為 true，以便除錯。</param>
+        /// <returns></returns>
+        public static async Task<ZhuyinDictionary> GetInstanceAsync(bool skipLoadingDictionary = false)
         {
             if (_instance == null)
             {
                 _instance = new ZhuyinDictionary();
-                await _instance.LoadFromResourceAsync();
+                if (!skipLoadingDictionary)
+                {
+                    await _instance.LoadFromResourceAsync();
+                }
             }
             return _instance;
         }

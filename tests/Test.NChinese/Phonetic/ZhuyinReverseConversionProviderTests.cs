@@ -52,9 +52,9 @@ namespace Test.NChinese.Phonetic
         [TestCaseSource("TestData")]
         public void Should_Convert_Succeed(string input, string[] expected)
         {
-            var zhuyinProvicer = new ZhuyinReverseConversionProvider();
+            var zhuyinProvider = new ZhuyinReverseConversionProvider();
 
-            var actual = zhuyinProvicer.Convert(input);
+            var actual = zhuyinProvider.Convert(input);
 
             Assert.IsTrue(actual.SequenceEqual(expected));
         }
@@ -62,11 +62,11 @@ namespace Test.NChinese.Phonetic
         [Test]
         public void Should_Convert_With_AutoFillSpaces()
         {
-            var zhuyinProvicer = new ZhuyinReverseConversionProvider();
-            zhuyinProvicer.AutoFillSpaces = true;
+            var zhuyinProvider = new ZhuyinReverseConversionProvider();
+            zhuyinProvider.AutoFillSpaces = true;
 
             var expected = new string[] { "ㄅ　ㄢˉ" }; // 注意有聲調符號（一聲）
-            var actual = zhuyinProvicer.Convert("班");
+            var actual = zhuyinProvider.Convert("班");
 
             Assert.IsTrue(actual.SequenceEqual(expected));
         }

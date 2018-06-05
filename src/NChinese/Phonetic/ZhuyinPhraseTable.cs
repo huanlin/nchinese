@@ -214,7 +214,17 @@ namespace NChinese.Phonetic
                     idx = text.IndexOf(phrase, start, count);
                     if (idx < 0)
                         break;
-                    // 有找到，記錄位置、取得注音字根，並繼續往後面找。
+                    if (matchedPhrases.ContainsKey(idx))
+                    {
+                        // 若先前已經有符合的片語，而且該片語長度比目前這個片語還要長，則保留既有的，並捨棄目前的片語。
+                        var previousMatch = matchedPhrases[idx];
+                        if (previousMatch.Text.Length > phrase.Length)
+                        {
+                            break;
+                        }
+                        matchedPhrases.Remove(idx);
+                    }
+                    // 有找到符合的片語。記錄位置、取得注音字根，並繼續往後面找。
                     zhuyinList = _table[phrase];
                     immPhrase = new ZhuyinPhrase(phrase, zhuyinList);
                     matchedPhrases.Add(idx, immPhrase);

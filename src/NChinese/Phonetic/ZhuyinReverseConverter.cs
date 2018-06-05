@@ -12,6 +12,12 @@ namespace NChinese.Phonetic
             _converter = revConvProvider ?? new ZhuyinReverseConversionProvider();
         }
 
+        public ZhuyinReverseConverter(bool skipLoadingDictionary)
+        {
+            _converter = new ZhuyinReverseConversionProvider(skipLoadingDictionary);
+        }
+
+
         /// <summary>
         /// 取得整串中文字的注音碼。
         /// </summary>
