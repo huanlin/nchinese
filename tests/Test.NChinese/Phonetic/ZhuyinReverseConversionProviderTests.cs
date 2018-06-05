@@ -34,6 +34,16 @@ namespace Test.NChinese.Phonetic
             },
             new object[]
             {
+                "礦",
+                new string[] { "ㄎㄨㄤˋ" }
+            },
+            new object[]
+            {
+                "什麼",
+                new string[] { "ㄕㄣˊ", "ㄇㄜ˙" }
+            },
+            new object[]
+            {
                 "便宜又方便得不得了",
                 new string[] { "ㄆㄧㄢˊ", "ㄧˊ", "ㄧㄡˋ", "ㄈㄤ", "ㄅㄧㄢˋ", "ㄉㄜ˙", "ㄅㄨˋ", "ㄉㄜˊ", "ㄌㄧㄠˇ" }
             }
