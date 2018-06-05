@@ -1,10 +1,10 @@
 ﻿using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Tools.NuGet;
-using Nuke.Core;
+using Nuke.Common;
 using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
 using static Nuke.Common.Tools.NuGet.NuGetTasks;
-using static Nuke.Core.IO.FileSystemTasks;
-using static Nuke.Core.IO.PathConstruction;
+using static Nuke.Common.IO.FileSystemTasks;
+using static Nuke.Common.IO.PathConstruction;
 
 class Build : NukeBuild
 {
@@ -54,9 +54,10 @@ class Build : NukeBuild
                 string nuspecFileName = RootDirectory / $"nuspec/NChinese.nuspec";
                 Logger.Info($"Creating Nuget package with {nuspecFileName}");
                 NuGetPack(nuspecFileName, s => nugetSettings);
-
+/*
                 nuspecFileName = RootDirectory / $"nuspec/NChinese.Imm.nuspec";
                 Logger.Info($"Creating Nuget package with {nuspecFileName}");
                 NuGetPack(nuspecFileName, s => nugetSettings);
+*/
             });
 }
