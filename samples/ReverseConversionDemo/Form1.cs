@@ -2,7 +2,6 @@
 using System.Text;
 using System.Windows.Forms;
 using NChinese;
-using NChinese.Imm;
 using NChinese.Phonetic;
 
 namespace ReverseConversionDemo
@@ -15,9 +14,10 @@ namespace ReverseConversionDemo
         }
 
 
-        private string ReverseConversion(string input, IReverseConversionProvider converter)
+        private string ReverseConversion(string input)
         {
-            string[] result = converter.Convert(input);
+            var converter = new ZhuyinReverseConverter();
+            string[] result = converter.GetZhuyin(input);
 
             var sb = new StringBuilder();
             foreach (string s in result)
@@ -29,17 +29,7 @@ namespace ReverseConversionDemo
 
         private void GoButton_Click(object sender, EventArgs e)
         {
-            ZhuyinFromBuiltInDict_TextBox.Text = ReverseConversion(
-                InputTextBox.Text,
-                new ZhuyinReverseConversionProvider());
-
-            PinyinFromImmApi_TextBox.Text = ReverseConversion(
-                InputTextBox.Text,
-                new ImmPinyinConversionProvider());
-
-            ZhuyinFromPinyin_TextBox.Text = ReverseConversion(
-                InputTextBox.Text,
-                new ImmZhuyinConversionProvider());
+            ZhuyinFromBuiltInDict_TextBox.Text = ReverseConversion(InputTextBox.Text);
         }
     }
 }
