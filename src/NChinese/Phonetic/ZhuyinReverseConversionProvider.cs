@@ -19,6 +19,15 @@ namespace NChinese.Phonetic
         public bool AutoFillSpaces { get; set; } = false;
 
         /// <summary>
+        /// 載入自定義辭庫檔案
+        /// </summary>
+        /// <param name="filename"></param>
+        public async void LoadCustomizedDictionaryAsync(string filename)
+        {
+            await _dict.LoadFromFileAsync(filename);
+        }
+
+        /// <summary>
         /// 把輸入字串轉換成注音字根陣列。
         /// </summary>
         /// <param name="input">一個或一串中文字。</param>
