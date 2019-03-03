@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NChinese.Phonetic
 {
@@ -19,10 +20,10 @@ namespace NChinese.Phonetic
         public bool AutoFillSpaces { get; set; } = false;
 
         /// <summary>
-        /// 載入自定義辭庫檔案
+        /// 載入自定義辭庫檔案。
         /// </summary>
         /// <param name="filename"></param>
-        public async void LoadCustomizedDictionaryAsync(string filename)
+        public async Task LoadCustomDictionaryAsync(string filename)
         {
             await _dict.LoadFromFileAsync(filename);
         }
