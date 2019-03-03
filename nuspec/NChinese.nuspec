@@ -6,7 +6,7 @@
     <authors>Michael Tsai</authors>
     <owners>Michael Tsai</owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <licenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</licenseUrl>
+    <license type="file">LICENSE.txt</license>
     <projectUrl>https://github.com/huanlin/nchinese</projectUrl>
     <description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</description>
     <releaseNotes></releaseNotes>
@@ -23,5 +23,6 @@
   </metadata>
   <files>
     <file src="src\NChinese\bin\Debug\net452\NChinese.dll" target="lib\net452\NChinese.dll" />
+    <file src="LICENSE.txt" target="" />
   </files>
 </package>

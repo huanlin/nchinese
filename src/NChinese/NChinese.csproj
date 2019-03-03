@@ -7,7 +7,7 @@
     <Company></Company>
     <Description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</Description>
     <Copyright></Copyright>
-    <PackageLicenseUrl>https://github.com/huanlin/nchinese/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/huanlin/nchinese</PackageProjectUrl>
     <RepositoryUrl>https://github.com/huanlin/nchinese</RepositoryUrl>
     <PackageTags>chinese;pinyin;zhuyin;bopomofo;CJK;中文;漢字;注音;拼音</PackageTags>
@@ -15,11 +15,12 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>Initial release as Nuget package.</PackageReleaseNotes>
   </PropertyGroup>
-
+ 
   <ItemGroup>
     <None Remove="Phonetic\CharZhuyinTable.txt" />
     <None Remove="Phonetic\ZhuyinExtTable.txt" />
     <None Remove="Phonetic\ZhuyinPhraseTable.txt" />
+	<None Include="..\..\LICENSE.txt" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <ItemGroup>
