@@ -20,7 +20,7 @@
     <None Remove="Phonetic\CharZhuyinTable.txt" />
     <None Remove="Phonetic\ZhuyinExtTable.txt" />
     <None Remove="Phonetic\ZhuyinPhraseTable.txt" />
-	<None Include="..\..\LICENSE.txt" Pack="true" PackagePath=""/>
+	<None Include="..\..\LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
