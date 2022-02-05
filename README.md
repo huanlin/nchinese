@@ -39,18 +39,17 @@ foreach (var s in zhuyinArray)
 
 ## 開發工具
 
- * Visual Studio 2017
+ * Visual Studio 2022
 
 **相依套件**
 
  * [NUnit](http://nunit.org/) 
  * [Serilog](https://serilog.net/)
+ * [MinVer](https://github.com/adamralph/minver)
 
 **建置工具**
  
- * [Nuke Build](https://nuke.build/)
- * [GitVersion](https://github.com/GitTools/GitVersion)
- * [Appveyor](https://www.appveyor.com/) 
+   * [Appveyor](https://www.appveyor.com/) 
 
 ## 未來可能加入什麼功能
 
