@@ -5,7 +5,7 @@ namespace NChinese.Phonetic
     /// <summary>
     /// 字元與其所屬的注音串列。
     /// </summary>
-    public class CharZhuyinInfo
+    public sealed class CharZhuyinInfo
     {        
         public CharZhuyinInfo() 
         {

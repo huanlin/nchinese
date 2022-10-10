@@ -1,9 +1,8 @@
-﻿namespace NChinese
-{
-    public interface IReverseConversionProvider
-    {
-        bool IsAvailable { get; }
+﻿namespace NChinese;
 
-        string[] Convert(string input);
-    }
+public interface IReverseConversionProvider
+{
+    bool IsAvailable { get; }
+
+    string[] Convert(string input);
 }

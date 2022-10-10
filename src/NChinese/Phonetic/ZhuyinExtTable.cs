@@ -4,104 +4,104 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace NChinese.Phonetic
+namespace NChinese.Phonetic;
+
+/// <summary>
+/// 擴充的注音組字字根對照檔。
+/// 用來弭補 ImmGetConversionList 的不足，例如：「一」和「們」都只傳回一組注音字根。
+/// </summary>
+[Obsolete("此類別已經不需要，若有需要增加的字，請加入 CharZhuyinTable.txt。")]
+public class ZhuyinExtTable
 {
-    /// <summary>
-    /// 擴充的注音組字字根對照檔。
-    /// 用來弭補 ImmGetConversionList 的不足，例如：「一」和「們」都只傳回一組注音字根。
-    /// </summary>
-    [Obsolete("此類別已經不需要，若有需要增加的字，請加入 CharZhuyinTable.txt。")]
-    public class ZhuyinExtTable
+    private static ZhuyinExtTable _zhuyinExtTbl = null;
+
+    private Dictionary<char, List<Zhuyin>> _table;  // 中文字與注音字根對照表，每一筆代表一個中文字的所有注音字根。
+
+    private ZhuyinExtTable()
     {
-        private static ZhuyinExtTable _zhuyinExtTbl = null;
+        _table = new Dictionary<char, List<Zhuyin>>();
 
-        private Dictionary<char, List<Zhuyin>> _table;  // 中文字與注音字根對照表，每一筆代表一個中文字的所有注音字根。
+        Load();
+    }
 
-        private ZhuyinExtTable()
+    /// <summary>
+    /// Singleton 建構方法。
+    /// </summary>
+    /// <returns></returns>
+    public static ZhuyinExtTable GetInstance()
+    {
+        if (_zhuyinExtTbl == null)
         {
-            _table = new Dictionary<char, List<Zhuyin>>();
-
-            Load();
+            _zhuyinExtTbl = new ZhuyinExtTable();
         }
+        return _zhuyinExtTbl;
+    }
 
-        /// <summary>
-        /// Singleton 建構方法。
-        /// </summary>
-        /// <returns></returns>
-        public static ZhuyinExtTable GetInstance()
+    #region 載入函式
+
+    /// <summary>
+    /// 從組件資源中載入對照表。
+    /// </summary>
+    public void Load()
+    {
+        Assembly asmb = Assembly.GetExecutingAssembly();
+        string resourceName = this.GetType().FullName + ".txt"; // Note: 這種寫法可以避免寫死的 namsepace，而且用於 obfuscator 時也能正常運作。
+        Stream stream = asmb.GetManifestResourceStream(resourceName);
+        if (stream == null)
         {
-            if (_zhuyinExtTbl == null)
-            {
-                _zhuyinExtTbl = new ZhuyinExtTable();
-            }
-            return _zhuyinExtTbl;
+            throw new Exception("CharZhuyinTable.Load 找不到資源: " + resourceName);
         }
-
-        #region 載入函式
-
-        /// <summary>
-        /// 從組件資源中載入對照表。
-        /// </summary>
-        public void Load()
+        using (stream)
         {
-            Assembly asmb = Assembly.GetExecutingAssembly();
-            string resourceName = this.GetType().FullName + ".txt"; // Note: 這種寫法可以避免寫死的 namsepace，而且用於 obfuscator 時也能正常運作。
-            Stream stream = asmb.GetManifestResourceStream(resourceName);
-            if (stream == null)
+            using (StreamReader sr = new StreamReader(stream, Encoding.Default))
             {
-                throw new Exception("CharZhuyinTable.Load 找不到資源: " + resourceName);
-            }
-            using (stream)
-            {
-                using (StreamReader sr = new StreamReader(stream, Encoding.Default))
-                {
-                    Load(sr);
-                }
+                Load(sr);
             }
         }
+    }
 
-        /// <summary>
-        /// 從串流中讀取對照表。
-        /// </summary>
-        /// <param name="sr"></param>
-        public void Load(StreamReader sr)
+    /// <summary>
+    /// 從串流中讀取對照表。
+    /// </summary>
+    /// <param name="sr"></param>
+    public void Load(StreamReader sr)
+    {
+        String line;
+        string[] fields;
+        char[] sep = new char[] {' '};
+        char ch;
+
+
+        while ((line = sr.ReadLine()) != null)
         {
-            String line;
-            string[] fields;
-            char[] sep = new char[] {' '};
-            char ch;
+            fields = line.Split(sep, 5, StringSplitOptions.RemoveEmptyEntries);
+            if (fields.Length < 2)  // 若只定義中文字，未指定字根，則不處理。
+                continue;
 
+            // 取出中文字，且不管中文字有幾個，都固定取第一個字。
+            ch = fields[0][0];
 
-            while ((line = sr.ReadLine()) != null)
+            // 移除既有的項目，亦即後來載入的資料會蓋過之前載入的。
+            if (_table.ContainsKey(ch))
             {
-                fields = line.Split(sep, 5, StringSplitOptions.RemoveEmptyEntries);
-                if (fields.Length < 2)  // 若只定義中文字，未指定字根，則不處理。
-                    continue;
-
-                // 取出中文字，且不管中文字有幾個，都固定取第一個字。
-                ch = fields[0][0];
-
-                // 移除既有的項目，亦即後來載入的資料會蓋過之前載入的。
-                if (_table.ContainsKey(ch))
-                {
-                    _table.Remove(ch);
-                }
-                List<Zhuyin> zyList = new List<Zhuyin>();
-                for (int i = 1; i < fields.Length; i++)
-                {
-                    Zhuyin zy = new Zhuyin(fields[i]);
-                    zyList.Add(zy);
-                }
-                _table.Add(ch, zyList);  
+                _table.Remove(ch);
             }
+            List<Zhuyin> zyList = new List<Zhuyin>();
+            for (int i = 1; i < fields.Length; i++)
+            {
+                Zhuyin zy = new Zhuyin(fields[i]);
+                zyList.Add(zy);
+            }
+            _table.Add(ch, zyList);  
         }
+    }
 
-        /// <summary>
-        /// 從外部檔案載入。
-        /// </summary>
-        /// <param name="filename"></param>
-        public void Load(string filename)
-        {
+    /// <summary>
+    /// 從外部檔案載入。
+    /// </summary>
+    /// <param name="filename"></param>
+    public void Load(string filename)
+    {
 			Encoding enc = Encoding.Default;
 
 			// 根據檔案名稱來判斷編碼.
@@ -115,21 +115,20 @@ namespace NChinese.Phonetic
 			}
 
 			using (StreamReader sr = new StreamReader(filename, enc))
-            {
-                Load(sr);
-            }
-        }
-
-        #endregion
-
-
-        public List<Zhuyin> this[char chineseChar]
         {
-            get
-            {
-                List<Zhuyin> value = _table[chineseChar];
-                return value;
-            }
+            Load(sr);
+        }
+    }
+
+    #endregion
+
+
+    public List<Zhuyin> this[char chineseChar]
+    {
+        get
+        {
+            List<Zhuyin> value = _table[chineseChar];
+            return value;
         }
     }
 }

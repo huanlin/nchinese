@@ -9,7 +9,7 @@ namespace NChinese.Phonetic
     /// <summary>
     /// 此類別用來查詢中文字的注音字根。
     /// </summary>
-    internal class CharZhuyinTable
+    internal sealed class CharZhuyinTable
     {
         private Dictionary<string, CharZhuyinInfo> m_MostFreqChars;   // 常用字
         private Dictionary<string, CharZhuyinInfo> m_SecondFreqChars; // 次常用字
