@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseConversion", "ReverseConversion\ReverseConversion.csproj", "{B668155E-6EDF-9A26-7AAB-672BE83B4AFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B668155E-6EDF-9A26-7AAB-672BE83B4AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B668155E-6EDF-9A26-7AAB-672BE83B4AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B668155E-6EDF-9A26-7AAB-672BE83B4AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B668155E-6EDF-9A26-7AAB-672BE83B4AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA87F542-22B0-410F-9A92-DF8B4D7AA8E1}
+	EndGlobalSection
+EndGlobal
