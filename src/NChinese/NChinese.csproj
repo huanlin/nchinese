@@ -1,61 +1,65 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Authors>Michael Tsai</Authors>
-    <Company></Company>
-    <Description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</Description>
-    <Copyright></Copyright>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/huanlin/nchinese</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/huanlin/nchinese</RepositoryUrl>
-    <PackageTags>chinese;pinyin;zhuyin;bopomofo;CJK;中文;漢字;注音;拼音</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Initial release as Nuget package.</PackageReleaseNotes>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <Nullable>disable</Nullable>
-    <BaseOutputPath>..\..\output\$(MSBuildProjectName)</BaseOutputPath>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-	<PublishRepositoryUrl>true</PublishRepositoryUrl>
-	<IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
- 
-  <ItemGroup>
-    <None Remove="Phonetic\CharZhuyinTable.txt" />
-    <None Remove="Phonetic\ZhuyinExtTable.txt" />
-    <None Remove="Phonetic\ZhuyinPhraseTable.txt" />
-	<None Include="..\..\LICENSE.txt" Pack="true" PackagePath="" />
-	<None Include="..\..\README.md">
-	  <Pack>True</Pack>
-	  <PackagePath>\</PackagePath>
-	</None>
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Authors>Michael Tsai</Authors>
+		<Company></Company>
+		<Description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</Description>
+		<Copyright></Copyright>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/huanlin/nchinese</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/huanlin/nchinese</RepositoryUrl>
+		<PackageTags>chinese;pinyin;zhuyin;bopomofo;CJK;中文;漢字;注音;拼音</PackageTags>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageReleaseNotes>Initial release as Nuget package.</PackageReleaseNotes>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Nullable>disable</Nullable>
+		<BaseOutputPath>..\..\output\$(MSBuildProjectName)</BaseOutputPath>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		
+		<!-- MinVer configuration -->
+		<MinVerTagPrefix>v</MinVerTagPrefix>
+		<MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Phonetic\ZhuyinDictionary.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Phonetic\CharZhuyinTable.txt" />
+		<None Remove="Phonetic\ZhuyinExtTable.txt" />
+		<None Remove="Phonetic\ZhuyinPhraseTable.txt" />
+		<None Include="..\..\LICENSE.txt" Pack="true" PackagePath="" />
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Phonetic\CharZhuyinTable.txt" />
-    <EmbeddedResource Include="Phonetic\ZhuyinExtTable.txt" />
-    <EmbeddedResource Include="Phonetic\ZhuyinPhraseTable.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Phonetic\ZhuyinDictionary.txt">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="MinVer" Version="6.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Serilog" Version="4.3.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.6.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Phonetic\CharZhuyinTable.txt" />
+		<EmbeddedResource Include="Phonetic\ZhuyinExtTable.txt" />
+		<EmbeddedResource Include="Phonetic\ZhuyinPhraseTable.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="MinVer" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Serilog" Version="4.3.0" />
+		<PackageReference Include="System.ValueTuple" Version="4.6.1" />
+	</ItemGroup>
 
 </Project>
