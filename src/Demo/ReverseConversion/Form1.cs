@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using NChinese;
 using NChinese.Phonetic;
 
-namespace ReverseConversionDemo
+namespace ReverseConversion
 {
     public partial class Form1 : Form
     {
