@@ -1,6 +1,6 @@
 # NChinese
 
-[![Build and Publish](https://github.com/huanlin/nchinese/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/huanlin/nchinese/actions/workflows/build-and-publish.yml) [![NuGet Badge](https://buildstats.info/nuget/nchinese)](https://www.nuget.org/packages/NChinese/) 
+[![Build and Publish](https://github.com/huanlin/nchinese/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/huanlin/nchinese/actions/workflows/build-and-publish.yml) [![NuGet](https://img.shields.io/nuget/v/NChinese.svg)](https://www.nuget.org/packages/NChinese/) 
 
 NChinese 是一套用來處理中文字詞的函式庫。目前具備的功能，主要是反查一串中文字的注音或拼音。
 
