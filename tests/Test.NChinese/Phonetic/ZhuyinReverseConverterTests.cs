@@ -23,7 +23,7 @@ namespace Test.NChinese.Phonetic
             string aChineseText = "什麼";
             string[] expected = { "ㄕ　ㄣˊ", "ㄇ　ㄚˇ" };
             string[] actual = converter.GetZhuyinWithPhraseTable(aChineseText);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace Test.NChinese.Phonetic
             string aChineseText = "什麼";
             string[] expected = { "ㄕ　ㄣˊ", "ㄇ　ㄚˇ" };
             string[] actual = converter.GetZhuyinWithPhraseTable(aChineseText);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
     }

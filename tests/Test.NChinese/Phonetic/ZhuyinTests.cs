@@ -19,12 +19,12 @@ namespace Test.NChinese.Phonetic
             Zhuyin expected = new Zhuyin("ㄊㄧㄢ");
             Zhuyin actual;
             actual = Zhuyin.ParseKeyString(zhuyinKeys);
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
 
             zhuyinKeys = "2k7";
             expected = new Zhuyin("ㄉㄜ" + Zhuyin.Tone0Char);  // 的
             actual = Zhuyin.ParseKeyString(zhuyinKeys);
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace Test.NChinese.Phonetic
             string expected = "ㄊㄧㄢ" + Zhuyin.Tone1Char;
             string actual;
             actual = target.ToString();
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Test.NChinese.Phonetic
             ZhuyinTone expected = ZhuyinTone.Tone3;
             ZhuyinTone actual;
             actual = Zhuyin.GetTone(zhuyinKeys);
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
 

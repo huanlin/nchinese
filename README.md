@@ -49,7 +49,7 @@ foreach (var s in zhuyinArray)
 
 **建置工具**
  
-   * [Appveyor](https://www.appveyor.com/) 
+   * GitHub Actions workflow
 
 ## 未來可能加入什麼功能
 
@@ -58,7 +58,7 @@ foreach (var s in zhuyinArray)
 
 ## 授權協議
 
-Copyright(c) 2018-2022 Michael Tsai.
+Copyright(c) 2018-2025 Michael Tsai.
 
 此開源專案是採用 [MIT 授權](https://github.com/huanlin/nchinese/blob/master/LICENSE)。
 

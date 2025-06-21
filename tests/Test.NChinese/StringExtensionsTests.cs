@@ -25,7 +25,7 @@ namespace Test.NChinese
             var charEnum = StringInfo.GetTextElementEnumerator(s);
             while (charEnum.MoveNext())
             {
-                Assert.IsTrue(charEnum.GetTextElement().IsCJK());
+                Assert.That(charEnum.GetTextElement().IsCJK(), Is.True);
             }           
         }
 
@@ -38,7 +38,7 @@ namespace Test.NChinese
             var charEnum = StringInfo.GetTextElementEnumerator(s);
             while (charEnum.MoveNext())
             {
-                Assert.IsFalse(charEnum.GetTextElement().IsCJK());
+                Assert.That(charEnum.GetTextElement().IsCJK(), Is.False);
             }
         }
 
@@ -48,8 +48,8 @@ namespace Test.NChinese
         public void Should_FindConsecutiveUnihan_FindChinese(string input, int expectedStartIndex, int expectedStopIndex)
         {
             var result = input.FindConsecutiveUnihan();
-            Assert.AreEqual(result.StartIndex, expectedStartIndex);
-            Assert.AreEqual(result.StopIndex, expectedStopIndex);
+            Assert.That(expectedStartIndex, Is.EqualTo(result.StartIndex));
+            Assert.That(expectedStopIndex, Is.EqualTo(result.StopIndex));
         }
 
     }

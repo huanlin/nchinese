@@ -56,7 +56,7 @@ namespace Test.NChinese.Phonetic
 
             var actual = zhuyinProvider.Convert(input);
 
-            Assert.IsTrue(actual.SequenceEqual(expected));
+            Assert.That(actual.SequenceEqual(expected), Is.True);
         }
 
         [Test]
@@ -68,8 +68,7 @@ namespace Test.NChinese.Phonetic
             var expected = new string[] { "ㄅ　ㄢˉ" }; // 注意有聲調符號（一聲）
             var actual = zhuyinProvider.Convert("班");
 
-            Assert.IsTrue(actual.SequenceEqual(expected));
+            Assert.That(actual.SequenceEqual(expected), Is.True);
         }
-
     }
 }

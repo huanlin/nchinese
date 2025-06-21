@@ -12,18 +12,19 @@ namespace Test.NChinese.Phonetic
 
         }
 
+        [Test]
         public void Should_IsPolyphonic_Work()
         {
             string aChar = "的";
             bool expected = true;
             bool actual;
             actual = ZhuyinQueryHelper.IsPolyphonic(aChar);
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected)); // Replace Assert.AreEqual with Assert.That
 
             aChar = "料";
             expected = false;
             actual = ZhuyinQueryHelper.IsPolyphonic(aChar);
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected)); // Replace Assert.AreEqual with Assert.That
         }
 
         [Test]
@@ -33,12 +34,12 @@ namespace Test.NChinese.Phonetic
             string[] expected = { "ㄌㄧㄠˋ" };
             string[] actual;
             actual = ZhuyinQueryHelper.GetZhuyinSymbols(aChar, false);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected)); // Replace CollectionAssert with Assert.That
 
             aChar = "們";
             expected = new string[] { "ㄇㄣˊ", "ㄇㄣ˙" };
             actual = ZhuyinQueryHelper.GetZhuyinSymbols(aChar, false);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected)); // Replace CollectionAssert with Assert.That
         }
 
         [Test]
@@ -48,8 +49,7 @@ namespace Test.NChinese.Phonetic
             string[] expected = { "xul4" };
             string[] actual;
             actual = ZhuyinQueryHelper.GetZhuyinKeys(aChar);
-            CollectionAssert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected)); // Replace CollectionAssert with Assert.That
         }
-
     }
 }
