@@ -39,16 +39,16 @@ jobs:
           echo "No version tag found, using 0.0.0"
         }    
     - name: Restore dependencies
-      run: dotnet restore src/HuanlinLib.sln
+      run: dotnet restore src/NChinese.sln
     
     - name: Build
-      run: dotnet build src/HuanlinLib.sln --configuration Release --no-restore /p:Version=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet build src/NChinese.sln --configuration Release --no-restore /p:Version=${{ steps.get_version.outputs.VERSION }}
     
     - name: Test
-      run: dotnet test tests/Test.Huanlin/Test.Huanlin.csproj --no-build --configuration Release --verbosity normal
+      run: dotnet test src/Tests/Test.NChinese/Test.NChinese.csproj --no-build --configuration Release --verbosity normal
     
     - name: Package
-      run: dotnet pack src/HuanlinLib.sln --configuration Release --no-build --output ./artifacts /p:Version=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack src/NChinese.sln --configuration Release --no-build --output ./artifacts /p:Version=${{ steps.get_version.outputs.VERSION }}
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
