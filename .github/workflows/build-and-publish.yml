@@ -1,10 +1,10 @@
-name: Build and Publish
+﻿name: Build and Publish
 
 on:
   push:
     branches: [ main ]
     tags:
-      - 'v*.*.*'
+      - '*.*.*'
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
       id: get_version
       shell: pwsh
       run: |
-        if ($env:GITHUB_REF -match 'refs/tags/v(.+)') {
+        if ($env:GITHUB_REF -match 'refs/tags/(.+)') {
           $version = $matches[1]
           echo "VERSION=$version" >> $env:GITHUB_OUTPUT
           echo "Creating release for version $version"
@@ -59,7 +59,7 @@ jobs:
   publish:
     name: Publish NuGet Packages
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: windows-latest
     
     steps:
