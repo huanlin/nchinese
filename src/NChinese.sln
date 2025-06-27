@@ -10,12 +10,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B78A0FF-68CC-47A2-8074-6637E3FEBB27}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\build-and-publish.yml = ..\.github\workflows\build-and-publish.yml
-		..\CHANGELOG.md = ..\CHANGELOG.md
-		..\LICENSE.txt = ..\LICENSE.txt
-		..\README.md = ..\README.md
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.NChinese", "Tests\Test.NChinese\Test.NChinese.csproj", "{A41B24A1-7E69-663C-014B-BA4BB0FEF92B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
