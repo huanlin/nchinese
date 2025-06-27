@@ -1,5 +1,9 @@
 # Change Log
 
+v1.2.3
+
+- 修正 GitHub Actions workflow: 只打包和發布 NChinese 套件。（原先的配置會連同 Test.NChinese 一起打包和發布）
+
 v1.2.2
 
 - 在 GitHub Actions 工作流程中加入快取 (caching) NuGet 套件的步驟。Modified by Gemini CLI.
