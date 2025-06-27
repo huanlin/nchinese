@@ -56,7 +56,7 @@ jobs:
       run: dotnet test src/Tests/Test.NChinese/Test.NChinese.csproj --no-build --configuration Release --verbosity normal
     
     - name: Package
-      run: dotnet pack src/NChinese.sln --configuration Release --no-build --output ./artifacts /p:Version=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack src/NChinese/NChinese.csproj --configuration Release --no-build --output ./artifacts /p:Version=${{ steps.get_version.outputs.VERSION }}
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
