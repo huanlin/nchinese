@@ -72,13 +72,8 @@ public sealed class ZhuyinDictionary : Dictionary<string, PhraseWithZhuyin>
         {
             throw new Exception("ZhuyinDictionary.LoadFromResource 找不到資源: " + resourceName);
         }
-        using (stream)
-        {
-            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-            {
-                await LoadAsync(reader);
-            }
-        }
+        using var reader = new StreamReader(stream, Encoding.UTF8);
+        await LoadAsync(reader);
     }
 
     public async Task LoadFromDefaultFileAsync()
@@ -98,10 +93,8 @@ public sealed class ZhuyinDictionary : Dictionary<string, PhraseWithZhuyin>
             throw new FileNotFoundException("找不到檔案", filename);
         }
 
-        using (var reader = new StreamReader(filename, Encoding.UTF8))
-        {
-            await LoadAsync(reader);
-        }
+        using var reader = new StreamReader(filename, Encoding.UTF8);
+        await LoadAsync(reader);
     }
 
     private async Task LoadAsync(StreamReader reader)

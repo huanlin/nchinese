@@ -98,14 +98,12 @@ public sealed class WordDictionaryManager
         var startTime = DateTime.Now;
         Logger.Information($"Begin loading words from the file: {filename}");
 
-        using (var reader = new StreamReader(filename, Encoding.UTF8))
+        using var reader = new StreamReader(filename, Encoding.UTF8);
+        string line = await reader.ReadLineAsync();
+        while (line != null)
         {
-            string line = await reader.ReadLineAsync();
-            while (line != null)
-            {
-                AddWord(line);
-                line = await reader.ReadLineAsync();
-            }
+            AddWord(line);
+            line = await reader.ReadLineAsync();
         }
         Logger.Information($"End loading words from the file: {filename}. Time spent: {DateTime.Now - startTime}");
         Logger.Information($"Totally loaded words: {WordDict.Count}");
@@ -113,12 +111,10 @@ public sealed class WordDictionaryManager
 
     public async Task SaveToTextFileAsync(string filename)
     {
-        using (var writer = new StreamWriter(filename, false, Encoding.UTF8))
+        using var writer = new StreamWriter(filename, false, Encoding.UTF8);
+        foreach (var item in WordDict)
         {
-            foreach (var item in WordDict)
-            {
-                await writer.WriteLineAsync($"{item.Key} {item.Value.Frequency} {item.Value.ToString()}");
-            }
+            await writer.WriteLineAsync($"{item.Key} {item.Value.Frequency} {item.Value.ToString()}");
         }
     }
 

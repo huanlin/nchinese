@@ -66,13 +66,8 @@ public sealed class ZhuyinPhraseTable
         {
             throw new Exception("CharZhuyinTable.Load 找不到資源: " + resourceName);
         }
-        using (stream)
-        {
-            using (StreamReader sr = new StreamReader(stream, Encoding.Default))
-            {
-                Load(sr);
-            }
-        }
+        using var sr = new StreamReader(stream, Encoding.Default);
+        Load(sr);
     }
 
     /// <summary>
@@ -140,11 +135,9 @@ public sealed class ZhuyinPhraseTable
 				enc = Encoding.UTF8;
 			}
 
-			using (StreamReader sr = new StreamReader(filename, enc))
-        {
+			using var sr = new StreamReader(filename, enc);
             Load(sr);
 				System.Diagnostics.Debug.WriteLine("ImmPhraseTable loaded: " + filename);
-        }
     }
 
     #endregion

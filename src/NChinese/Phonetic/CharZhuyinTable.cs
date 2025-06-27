@@ -45,13 +45,8 @@ namespace NChinese.Phonetic
             {
                 throw new Exception("CharZhuyinTable.Load 找不到資源: " + resourceName);
             }
-            using (stream)
-            {
-                using (StreamReader sr = new StreamReader(stream, Encoding.UTF8))
-                {
-                    Load(sr);
-                }
-            }
+            using var sr = new StreamReader(stream, Encoding.UTF8);
+            Load(sr);
         }
 
         /// <summary>
@@ -60,10 +55,8 @@ namespace NChinese.Phonetic
         /// <param name="fileName"></param>
         public void Load(string fileName)
         {
-            using (StreamReader sr = new StreamReader(fileName, Encoding.UTF8))
-            {
-                Load(sr);
-            }
+            using var sr = new StreamReader(fileName, Encoding.UTF8);
+            Load(sr);
         }
 
         /// <summary>
