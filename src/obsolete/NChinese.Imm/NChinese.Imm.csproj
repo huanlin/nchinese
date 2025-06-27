@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <Platforms>AnyCPU;x86;x64</Platforms>
     <Authors>Michael Tsai</Authors>
     <Description>NChinese.Imm provides helper classes for doing reverse conversion via IFELanguage COM objects. That is, you can use this library to get Zhuyin (aka BoPoMoFo) or Pinyin symbols for a Chinese string.</Description>

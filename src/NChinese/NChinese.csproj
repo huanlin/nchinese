@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<Authors>Michael Tsai</Authors>
 		<Company></Company>
 		<Description>NChinese is a library for handling Chinese characters and phonetics, including Pinyin (拼音) and Zhuyin (注音, aka BoPoMoFo) .</Description>
