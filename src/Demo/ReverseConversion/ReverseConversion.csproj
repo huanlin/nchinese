@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NChinese" Version="1.2.0" />
+    <PackageReference Include="NChinese" />
   </ItemGroup>
 
 </Project>
